@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Classes.salario;
+package Classes.genero;
 
 /**
  *
  * @author aluno
  */
-public class TipoSalario {
+public class GestaoGenero extends Resources.ContainerOfObjects {
     
 }
