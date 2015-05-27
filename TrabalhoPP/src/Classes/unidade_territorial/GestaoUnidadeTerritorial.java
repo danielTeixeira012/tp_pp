@@ -14,7 +14,7 @@ import Interfaces.UnidadeTerritorialContrato;
  *
  * @author aluno
  */
-public class GestaoUnidadeTerritorial extends Resources.ContainerOfObjects implements GestorUnidadeTerritorialContrato{
+public class GestaoUnidadeTerritorial extends Resources.ContainerOfObjects implements GestorUnidadeTerritorialContrato {
 
     @Override
     public boolean adicionarUT(UnidadeTerritorialContrato utc) throws UnidadeTerritorialException {
@@ -23,7 +23,12 @@ public class GestaoUnidadeTerritorial extends Resources.ContainerOfObjects imple
 
     @Override
     public void listarUT() throws UnidadeTerritorialException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+        } catch(Exception e)  {
+            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
+        }
+
     }
 
     @Override
@@ -51,6 +56,4 @@ public class GestaoUnidadeTerritorial extends Resources.ContainerOfObjects imple
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    
-    
 }

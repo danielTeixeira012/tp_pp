@@ -14,6 +14,10 @@ import Interfaces.TipoUnidadeTerritorialContrato;
  */
 public class UnidadeTerritorial extends UnidadeTerritorialException implements Interfaces.UnidadeTerritorialContrato {
 
+    private String nome;
+    private TipoUnidadeTerritorial tipo;
+    
+
     @Override
     public String getNome() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -33,5 +37,5 @@ public class UnidadeTerritorial extends UnidadeTerritorialException implements I
     public TipoUnidadeTerritorialContrato getTipo() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
 }
