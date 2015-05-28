@@ -9,51 +9,120 @@ import Exceptions.UnidadeTerritorialException;
 import Interfaces.GestorUnidadeTerritorialContrato;
 import Interfaces.TipoUnidadeTerritorialContrato;
 import Interfaces.UnidadeTerritorialContrato;
+import Resources.ContainerOfObjects;
 
 /**
  *
  * @author aluno
  */
 public class GestaoUnidadeTerritorial extends Resources.ContainerOfObjects implements GestorUnidadeTerritorialContrato {
-
+    
+    public GestaoUnidadeTerritorial() {
+    }
+    
+    public GestaoUnidadeTerritorial(int size) {
+        super(size);
+    }
+    
     @Override
     public boolean adicionarUT(UnidadeTerritorialContrato utc) throws UnidadeTerritorialException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        if (findObject(utc) == -1) {
+            
+            boolean toReturn = this.addObject(utc);
+            if (toReturn == true) {
+                System.out.println("A unidade territorial foi adicionada com sucesso.");
+                return toReturn;
+            } else {
+                System.out.println("A unidade territorial não foi adicionada!!!");
+                return toReturn;
+            }
+        } else {
+            System.out.println("A unidade territorial já se encontra adicionada!!!");
+            return false;
+        }
+        
     }
+    
+    /***
+     * lista cada ut individualmente 
+     * @param ut recebe uma unidade Territorial 
+     * @throws UnidadeTerritorialException 
+     */
+
+    public void listarUTindividual(UnidadeTerritorialContrato ut) throws UnidadeTerritorialException {
+        ut.toString();
+    }
+    
+    /**
+     * lista todas as unidades territoriais
+     * @throws UnidadeTerritorialException 
+     */
 
     @Override
     public void listarUT() throws UnidadeTerritorialException {
-        try {
-        } catch(Exception e)  {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-
+        for (UnidadeTerritorial ut : (UnidadeTerritorial[]) super.getObjects()) {
+            this.listarUTindividual(ut);
         }
-
+        
     }
-
+    
+    /**
+     * 
+     * @param uts
+     * @throws UnidadeTerritorialException 
+     */
+    
+    public void listarUTs(UnidadeTerritorialContrato[] uts) throws UnidadeTerritorialException {
+        
+        for (UnidadeTerritorial ut : (UnidadeTerritorial[]) uts) {
+            this.listarUTindividual(ut);
+        }
+        
+    }
+    
+    /**
+     * lista unidades territoriais por tipo
+     * @param tutc
+     * @throws UnidadeTerritorialException 
+     */
     @Override
     public void listarUT(TipoUnidadeTerritorialContrato tutc) throws UnidadeTerritorialException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.listarUTs(this.getUTsPorTipo(tutc));  
     }
-
+    
     @Override
     public UnidadeTerritorialContrato getUT(int i) throws UnidadeTerritorialException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return (UnidadeTerritorialContrato) super.getObject(i);    
     }
-
+    
+    public UnidadeTerritorial[] getUts(){
+        return (UnidadeTerritorial[])super.getObjects();
+    }
+    
     @Override
     public UnidadeTerritorialContrato[] getUTsPorTipo(TipoUnidadeTerritorialContrato tutc) throws UnidadeTerritorialException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        GestaoUnidadeTerritorial tempContainer = new GestaoUnidadeTerritorial();
+        tempContainer.getObjects();
+        
+        for (UnidadeTerritorial ut : (UnidadeTerritorial[]) super.getObjects()) {
+            if (ut.getTipo() == tutc) {
+                tempContainer.addObject(ut);                
+            }
+        }
+        UnidadeTerritorialContrato[] toReturn = (UnidadeTerritorialContrato[]) tempContainer.getObjects();
+        return toReturn;
+        
     }
-
+    
     @Override
     public int getTamanho() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return super.countObject();
     }
-
+    
     @Override
     public int getPosicao(UnidadeTerritorialContrato utc) throws UnidadeTerritorialException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return findObject(utc);
     }
-
+    
 }

@@ -16,6 +16,15 @@ import Interfaces.UnidadeTerritorialContrato;
  */
 public class gestorSalario extends Resources.ContainerOfObjects implements GestorSalariosContrato {
 
+    public gestorSalario() {
+    }
+
+    public gestorSalario(int size) {
+        super(size);
+    }
+    
+    
+
     @Override
     public boolean addRegistoSalario(Object o) throws RegistoSalarioException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

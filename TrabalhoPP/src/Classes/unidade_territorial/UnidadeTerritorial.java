@@ -5,6 +5,7 @@
  */
 package Classes.unidade_territorial;
 
+import Classes.salario.Salario;
 import Exceptions.UnidadeTerritorialException;
 import Interfaces.TipoUnidadeTerritorialContrato;
 
@@ -16,26 +17,48 @@ public class UnidadeTerritorial extends UnidadeTerritorialException implements I
 
     private String nome;
     private TipoUnidadeTerritorial tipo;
-    
+    private Salario[] salarios;
+
+    public UnidadeTerritorial(String nome, TipoUnidadeTerritorial tipo,Salario[]salarios) {
+        this.nome = nome;
+        this.tipo = tipo;
+        this.salarios=salarios;
+    }
+
+    public Salario[] getSalarios() {
+        return salarios;
+    }
+
+    public void setSalarios(Salario[] salarios) {
+        this.salarios = salarios;
+    }
 
     @Override
     public String getNome() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this.nome;
     }
 
     @Override
     public void setNome(String string) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.nome = string;
     }
 
     @Override
     public void setTipo(TipoUnidadeTerritorialContrato tutc) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.tipo= (TipoUnidadeTerritorial) tutc;
     }
 
     @Override
     public TipoUnidadeTerritorialContrato getTipo() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this.tipo;
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public String toString() {
+        return "UnidadeTerritorial{" + "nome=" + nome + ", tipo=" + tipo + '}';
+    }
+    
+    
 
 }

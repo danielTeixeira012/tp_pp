@@ -10,5 +10,25 @@ package Classes.unidade_territorial;
  * @author aluno
  */
 public class TipoUnidadeTerritorial implements Interfaces.TipoUnidadeTerritorialContrato {
+    private String tipo;
+
+    public TipoUnidadeTerritorial(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    @Override
+    public String toString() {
+        return "TipoUnidadeTerritorial{" + "tipo=" + tipo + '}';
+    }
+
+    
     
 }

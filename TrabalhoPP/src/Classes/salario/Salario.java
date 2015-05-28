@@ -16,26 +16,18 @@ import Exceptions.RegistoSalarioException;
  */
 public class Salario extends RegistoSalarioException {
 
-    private UnidadeTerritorial ut;
     private Ano ano;
     private Genero generoSalario;
     private float salario;
 
   
-    public Salario(UnidadeTerritorial ut, Ano ano, Genero generoSalario, float salario) {
-        this.ut = ut;
+    public Salario(Ano ano, Genero generoSalario, float salario) {
+
         this.ano = ano;
         this.generoSalario = generoSalario;
         this.salario = salario;
     }
 
-    public UnidadeTerritorial getUt() {
-        return ut;
-    }
-
-    public void setUt(UnidadeTerritorial ut) {
-        this.ut = ut;
-    }
 
     public Ano getAno() {
         return ano;

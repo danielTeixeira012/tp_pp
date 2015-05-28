@@ -12,9 +12,9 @@ import java.util.Arrays;
  *
  * @author danielteixeira
  */
-public class ContainerOfObjects implements GestorObjetosContrato{
+public class ContainerOfObjects implements GestorObjetosContrato {
 
-    private final int DEFAULT_SIZE = 100;
+    private final int DEFAULT_SIZE = 30;
     private Object[] objects;
 
     public ContainerOfObjects(Object[] objects) {
@@ -23,14 +23,16 @@ public class ContainerOfObjects implements GestorObjetosContrato{
     }
 
     public ContainerOfObjects() {
-        this.objects = new Object[DEFAULT_SIZE];
+        this.objects = new Object[0];
     }
 
-    public ContainerOfObjects(int maxSize) {
-        this.objects = new Object[maxSize];
+    public ContainerOfObjects(int size) {
+        if (size <= DEFAULT_SIZE && size > 0) {
+            this.objects = new Object[size];
+        }
     }
 
-    private int countObject() {
+    public int countObject() {
         int count = 0;
         for (Object obj : this.objects) {
             if (obj != null) {
@@ -42,26 +44,29 @@ public class ContainerOfObjects implements GestorObjetosContrato{
 
     @Override
     public boolean addObject(Object newObject) {
-        if (this.objects.length == countObject()) {
-            return false;
-        } else {
-            this.objects[countObject()] = newObject;
-            return true;
-        }
-    }
+        this.increaseSize();
+        this.objects[this.objects.length - 1] = newObject;
+        return true;
+}
 
-    @Override
-    public Object removeObject(int position) {
+@Override
+        public Object removeObject(int position) {
         if (countObject() != 0) {
             Object objReturn = this.objects[position];
             for (int i = position; i < countObject(); i++) {
                 this.objects[i] = this.objects[i + 1];
             }
-            this.objects[countObject() - 1] = null;
+            this.decreaseSize();
             return objReturn;
         }
         return null;
     }
+
+    public Object[] getObjects() {
+        return objects;
+    }
+    
+    
 
     protected boolean setObject(int position, Object newObject) {
         if (this.objects[position] != null) {
@@ -73,14 +78,14 @@ public class ContainerOfObjects implements GestorObjetosContrato{
     }
 
     @Override
-    public int hashCode() {
+        public int hashCode() {
         int hash = 5;
         hash = 41 * hash + Arrays.deepHashCode(this.objects);
         return hash;
     }
 
     @Override
-    public boolean equals(Object obj) {
+        public boolean equals(Object obj) {
         if (obj == null) {
             return false;
         }
@@ -95,7 +100,7 @@ public class ContainerOfObjects implements GestorObjetosContrato{
     }
 
     @Override
-    public int findObject(Object obj) {
+        public int findObject(Object obj) {
         int index = -1;
         for (Object object : this.objects) {
             if (object != null) {
@@ -122,22 +127,32 @@ public class ContainerOfObjects implements GestorObjetosContrato{
     }
 
     @Override
-    public Object getObject(int i) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        public Object getObject(int i) {
+        return this.objects[i];
     }
 
     @Override
-    public boolean increaseSize() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        public boolean increaseSize() {
+        
+        Object array[] = new Object[this.objects.length + 1];
+            array = this.objects;
+        this.objects = array;
+        return true;
     }
 
     @Override
-    public boolean decreaseSize() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        public boolean decreaseSize() {
+    Object array[] = new Object[this.objects.length - 1];
+
+        for (int i = 0; i < array.length; i++) {
+            array[i] = this.objects[i];
+        }
+        this.objects = array;
+        return true;
     }
 
     @Override
-    public void sort() {
+        public void sort() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

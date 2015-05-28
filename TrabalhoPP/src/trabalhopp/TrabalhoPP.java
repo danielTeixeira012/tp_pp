@@ -16,6 +16,7 @@ public class TrabalhoPP {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        int teste[] = new int[0];
     }
     
 }
