@@ -67,6 +67,7 @@ public class TrabalhoPP {
         
         GestaoUnidadeTerritorial gut = new GestaoUnidadeTerritorial(8);
         System.out.println(un1.getTipo());
+        System.out.println(un1.getTipo());
         System.out.println(un2.getTipo());
         System.out.println(un3.getTipo());
         System.out.println(un4.getTipo());
@@ -84,6 +85,8 @@ public class TrabalhoPP {
         gut.adicionarUT(un6);
         gut.adicionarUT(un7);
         gut.adicionarUT(un8);
+        
+        
         
         
         
