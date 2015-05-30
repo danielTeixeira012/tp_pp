@@ -9,6 +9,7 @@ import Classes.Mapeamento.Mapeamento;
 import Classes.Mapeamento.MapeamentoTipoUt;
 import Classes.ano.Ano;
 import Classes.genero.Genero;
+import Classes.genero.GeneroEnum;
 import Classes.salario.Salario;
 import Classes.unidade_territorial.GestaoUnidadeTerritorial;
 import Classes.unidade_territorial.TipoUnidadeTerritorial;
@@ -32,8 +33,8 @@ public class TrabalhoPP {
         TipoUnidadeTerritorial nuts3 = new TipoUnidadeTerritorial("NUTS3");
         TipoUnidadeTerritorial municipio = new TipoUnidadeTerritorial("MUNICIPIO");
         
-        Genero masc = new Genero("masculino");
-        Genero fem = new Genero("feminino");
+        Genero masc = new Genero(GeneroEnum.Masculino);
+        Genero fem = new Genero(GeneroEnum.Feminino);
         
         Ano ano2002 = new Ano(2002);
         Ano ano2003 = new Ano(2003);

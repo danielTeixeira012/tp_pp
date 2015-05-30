@@ -16,6 +16,10 @@ import Resources.ContainerOfObjects;
  * @author aluno
  */
 public class GestaoUnidadeTerritorial extends Resources.ContainerOfObjects implements GestorUnidadeTerritorialContrato {
+
+    public GestaoUnidadeTerritorial(Object[] objects) {
+        super(objects);
+    }
     
     public GestaoUnidadeTerritorial() {
     }
@@ -124,5 +128,6 @@ public class GestaoUnidadeTerritorial extends Resources.ContainerOfObjects imple
     public int getPosicao(UnidadeTerritorialContrato utc) throws UnidadeTerritorialException {
         return findObject(utc);
     }
+    
     
 }

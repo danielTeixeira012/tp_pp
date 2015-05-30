@@ -25,6 +25,10 @@ public class UnidadeTerritorial extends UnidadeTerritorialException implements I
         this.salarios=salarios;
     }
 
+    public void setTipo(TipoUnidadeTerritorial tipo) {
+        this.tipo = tipo;
+    }
+
     public Salario[] getSalarios() {
         return salarios;
     }

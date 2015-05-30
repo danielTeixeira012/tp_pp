@@ -45,7 +45,7 @@ public class ContainerOfObjects implements GestorObjetosContrato {
     @Override
     public boolean addObject(Object newObject) {
         this.increaseSize();
-        this.objects[this.objects.length - 1] = newObject;
+        this.objects[this.countObject()] = newObject;
         return true;
 }
 
@@ -113,18 +113,18 @@ public class ContainerOfObjects implements GestorObjetosContrato {
         return -1;
     }
 
-    public void sort(Comparator[] obj) {
-        for (int i = 0; i < objects.length; i++) {
-            for (int j = 0; j < objects.length - i - 1; j++) {
-                if (obj[i].CompareTo(obj[j]) == 1) {
-                    Comparator swap = obj[j];
-                    obj[j] = obj[j + 1];
-                    obj[j + 1] = swap;
-                }
-            }
-        }
-
-    }
+//    public void sort(Comparator[] obj) {
+//        for (int i = 0; i < objects.length; i++) {
+//            for (int j = 0; j < objects.length - i - 1; j++) {
+//                if (obj[i].CompareTo(obj[j]) == 1) {
+//                    Comparator swap = obj[j];
+//                    obj[j] = obj[j + 1];
+//                    obj[j + 1] = swap;
+//                }
+//            }
+//        }
+//
+//    }
 
     @Override
         public Object getObject(int i) {

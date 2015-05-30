@@ -22,7 +22,7 @@ public class Mapeamento {
         UnidadeTerritorial[] uts = gut.getUts();
 
         //vetor de mapeamentos
-        ContainerOfObjects mapeamentoContainer = new ContainerOfObjects();
+        ContainerOfObjects mapeamentoContainer = new ContainerOfObjects();        
 
         for (UnidadeTerritorial ut : uts) {
             TipoUnidadeTerritorial tut = (TipoUnidadeTerritorial) ut.getTipo();
@@ -67,5 +67,5 @@ public class Mapeamento {
         }
 
     }
-
+    
 }
