@@ -65,7 +65,16 @@ public class TrabalhoPP {
         UnidadeTerritorial un7 = new UnidadeTerritorial("Felgueiras", municipio, as1);
         UnidadeTerritorial un8 = new UnidadeTerritorial("Penafiel", municipio, as1);
         
-        GestaoUnidadeTerritorial gut = new GestaoUnidadeTerritorial(8);
+        GestaoUnidadeTerritorial gut = new GestaoUnidadeTerritorial();
+        gut.adicionarUT(un1);
+        gut.adicionarUT(un2);
+        gut.adicionarUT(un3);
+        gut.adicionarUT(un4);
+        gut.adicionarUT(un5);
+        gut.adicionarUT(un6);
+        gut.adicionarUT(un7);
+        gut.adicionarUT(un8);
+        
         System.out.println(un1.getTipo());
         System.out.println(un1.getTipo());
         System.out.println(un2.getTipo());
@@ -77,15 +86,7 @@ public class TrabalhoPP {
         System.out.println(un8.getTipo());
          
         Mapeamento m1 = new Mapeamento(gut);
-        gut.adicionarUT(un1);
-        gut.adicionarUT(un2);
-        gut.adicionarUT(un3);
-        gut.adicionarUT(un4);
-        gut.adicionarUT(un5);
-        gut.adicionarUT(un6);
-        gut.adicionarUT(un7);
-        gut.adicionarUT(un8);
-        
+     
         
         
         

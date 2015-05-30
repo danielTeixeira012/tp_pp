@@ -47,10 +47,10 @@ public class ContainerOfObjects implements GestorObjetosContrato {
         this.increaseSize();
         this.objects[this.countObject()] = newObject;
         return true;
-}
+    }
 
-@Override
-        public Object removeObject(int position) {
+    @Override
+    public Object removeObject(int position) {
         if (countObject() != 0) {
             Object objReturn = this.objects[position];
             for (int i = position; i < countObject(); i++) {
@@ -65,8 +65,6 @@ public class ContainerOfObjects implements GestorObjetosContrato {
     public Object[] getObjects() {
         return objects;
     }
-    
-    
 
     protected boolean setObject(int position, Object newObject) {
         if (this.objects[position] != null) {
@@ -78,14 +76,14 @@ public class ContainerOfObjects implements GestorObjetosContrato {
     }
 
     @Override
-        public int hashCode() {
+    public int hashCode() {
         int hash = 5;
         hash = 41 * hash + Arrays.deepHashCode(this.objects);
         return hash;
     }
 
     @Override
-        public boolean equals(Object obj) {
+    public boolean equals(Object obj) {
         if (obj == null) {
             return false;
         }
@@ -100,7 +98,7 @@ public class ContainerOfObjects implements GestorObjetosContrato {
     }
 
     @Override
-        public int findObject(Object obj) {
+    public int findObject(Object obj) {
         int index = -1;
         for (Object object : this.objects) {
             if (object != null) {
@@ -125,24 +123,23 @@ public class ContainerOfObjects implements GestorObjetosContrato {
 //        }
 //
 //    }
-
     @Override
-        public Object getObject(int i) {
+    public Object getObject(int i) {
         return this.objects[i];
     }
 
     @Override
-        public boolean increaseSize() {
-        
+    public boolean increaseSize() {
         Object array[] = new Object[this.objects.length + 1];
-            array = this.objects;
+        System.out.println(array.length);
+        System.arraycopy( this.objects, 0, array, 0, this.objects.length );
         this.objects = array;
         return true;
     }
 
     @Override
-        public boolean decreaseSize() {
-    Object array[] = new Object[this.objects.length - 1];
+    public boolean decreaseSize() {
+        Object array[] = new Object[this.objects.length - 1];
 
         for (int i = 0; i < array.length; i++) {
             array[i] = this.objects[i];
@@ -152,9 +149,8 @@ public class ContainerOfObjects implements GestorObjetosContrato {
     }
 
     @Override
-        public void sort() {
+    public void sort() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    
 }
