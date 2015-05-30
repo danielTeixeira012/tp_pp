@@ -101,7 +101,12 @@ public class GestaoUnidadeTerritorial extends Resources.ContainerOfObjects imple
     }
     
     public UnidadeTerritorial[] getUts(){
-        return (UnidadeTerritorial[])super.getObjects();
+        UnidadeTerritorial[] uts = new UnidadeTerritorial[super.countObject()];
+        for(int i=0; i<super.countObject();i++){
+        uts[i] = (UnidadeTerritorial) super.getObject(i);
+        }
+        
+        return uts;
     }
     
     @Override

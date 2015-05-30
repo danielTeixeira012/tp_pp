@@ -131,7 +131,7 @@ public class ContainerOfObjects implements GestorObjetosContrato {
     @Override
     public boolean increaseSize() {
         Object array[] = new Object[this.objects.length + 1];
-        System.out.println(array.length);
+        //System.out.println(array.length);
         System.arraycopy( this.objects, 0, array, 0, this.objects.length );
         this.objects = array;
         return true;

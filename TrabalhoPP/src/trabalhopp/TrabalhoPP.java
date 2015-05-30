@@ -84,9 +84,8 @@ public class TrabalhoPP {
         System.out.println(un6.getTipo());
         System.out.println(un7.getTipo());
         System.out.println(un8.getTipo());
-         
+           
         Mapeamento m1 = new Mapeamento(gut);
-     
         
         
         
