@@ -132,7 +132,7 @@ public class ContainerOfObjects implements GestorObjetosContrato {
     public boolean increaseSize() {
         Object array[] = new Object[this.objects.length + 1];
         //System.out.println(array.length);
-        System.arraycopy( this.objects, 0, array, 0, this.objects.length );
+        System.arraycopy(this.objects, 0, array, 0, this.objects.length);
         this.objects = array;
         return true;
     }
@@ -151,6 +151,16 @@ public class ContainerOfObjects implements GestorObjetosContrato {
     @Override
     public void sort() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    //Faz o cast de um vetor para um vetor de Containers
+    public ContainerOfObjects[] castVector(Object[] objVector) {
+        ContainerOfObjects[] containers = new ContainerOfObjects[objVector.length];
+        for (int i = 0; i < objVector.length; i++) {
+            containers[i] = (ContainerOfObjects) objVector[i];
+        }
+
+        return containers;
     }
 
 }

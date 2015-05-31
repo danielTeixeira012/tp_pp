@@ -5,8 +5,7 @@
  */
 package trabalhopp;
 
-import Classes.Mapeamento.Mapeamento;
-import Classes.Mapeamento.MapeamentoTipoUt;
+import Classes.Mapeamento.MapeamentoDemo;
 import Classes.ano.Ano;
 import Classes.genero.Genero;
 import Classes.genero.GeneroEnum;
@@ -75,17 +74,9 @@ public class TrabalhoPP {
         gut.adicionarUT(un7);
         gut.adicionarUT(un8);
         
-        System.out.println(un1.getTipo());
-        System.out.println(un1.getTipo());
-        System.out.println(un2.getTipo());
-        System.out.println(un3.getTipo());
-        System.out.println(un4.getTipo());
-        System.out.println(un5.getTipo());
-        System.out.println(un6.getTipo());
-        System.out.println(un7.getTipo());
-        System.out.println(un8.getTipo());
-           
-        Mapeamento m1 = new Mapeamento(gut);
+         
+        MapeamentoDemo m1 = new MapeamentoDemo(gut.getUts());
+        m1.printAll();
         
         
         

@@ -5,9 +5,7 @@
  */
 package Classes.Mapeamento;
 
-import Classes.unidade_territorial.GestaoUnidadeTerritorial;
-import Classes.unidade_territorial.TipoUnidadeTerritorial;
-import Classes.unidade_territorial.UnidadeTerritorial;
+import Interfaces.UnidadeTerritorialContrato;
 import Resources.ContainerOfObjects;
 
 /**
@@ -16,56 +14,43 @@ import Resources.ContainerOfObjects;
  */
 public class Mapeamento {
 
-    public Mapeamento(GestaoUnidadeTerritorial gut) {
+    private UnidadeTerritorialContrato ut;
+    private Mapeamento[] mapeamentosFilho;
 
-        //Unidades Territoriais
-        UnidadeTerritorial[] uts = gut.getUts();
+    public Mapeamento(UnidadeTerritorialContrato ut) {
+        GestaoMapeamento gestaoMapeamentosFilho = new GestaoMapeamento();
+        this.mapeamentosFilho=gestaoMapeamentosFilho.getMaps();
+        this.ut = ut;
+    }
 
-        //vetor de mapeamentos
-        ContainerOfObjects mapeamentoContainer = new ContainerOfObjects();        
+    public UnidadeTerritorialContrato getUt() {
+        return ut;
+    }
 
-        for (UnidadeTerritorial ut : uts) {
-            TipoUnidadeTerritorial tut = (TipoUnidadeTerritorial) ut.getTipo();
-            if ("NUTS".equals(tut.getTipo())) {
-                MapeamentoTipoUt nutsMap = new MapeamentoTipoUt(ut);
-                mapeamentoContainer.addObject(nutsMap);
-            }
+    public void setUt(UnidadeTerritorialContrato ut) {
+        this.ut = ut;
+    }
 
-            if ("NUTS1".equals(tut.getTipo())) {
+    public void addMapeamentoFilho(Mapeamento mapeamentoFilho) {
+        GestaoMapeamento gestaoMapeamentosFilho = new GestaoMapeamento(this.mapeamentosFilho);
+        gestaoMapeamentosFilho.addMap(mapeamentoFilho);
+        this.mapeamentosFilho=gestaoMapeamentosFilho.getMaps();
+    }
 
-                MapeamentoTipoUt nuts1map = new MapeamentoTipoUt(ut);
-                MapeamentoTipoUt nutsMapPai = (MapeamentoTipoUt) mapeamentoContainer.getObject(mapeamentoContainer.countObject() - 1);
-                nutsMapPai.addMapeamentoFilho(nuts1map);
-                mapeamentoContainer.addObject(nuts1map);
+    public Mapeamento[] getMapeamentosFilho() {
+        return this.mapeamentosFilho;
+    }
 
-            }
+    public Mapeamento getMapeamentoFilho(int indice) {
+        GestaoMapeamento gestaoMapeamentosFilho = new GestaoMapeamento(this.mapeamentosFilho);
+        return (Mapeamento) gestaoMapeamentosFilho.getMap(indice);
+    }
 
-            if ("NUTS2".equals(tut.getTipo())) {
-                MapeamentoTipoUt nuts2map = new MapeamentoTipoUt(ut);
-                MapeamentoTipoUt nutsMapPai = (MapeamentoTipoUt) mapeamentoContainer.getObject(mapeamentoContainer.countObject() - 1);
-                nutsMapPai.addMapeamentoFilho(nuts2map);
-                mapeamentoContainer.addObject(nuts2map);
-
-            }
-            
-            if ("NUTS3".equals(tut.getTipo())) {
-                MapeamentoTipoUt nuts3map = new MapeamentoTipoUt(ut);
-                MapeamentoTipoUt nutsMapPai = (MapeamentoTipoUt) mapeamentoContainer.getObject(mapeamentoContainer.countObject() - 1);
-                nutsMapPai.addMapeamentoFilho(nuts3map);
-                mapeamentoContainer.addObject(nuts3map);
-
-            }
-            
-            if ("MUNICIPIO".equals(tut.getTipo())) {
-                MapeamentoTipoUt municipiomap = new MapeamentoTipoUt(ut);
-                MapeamentoTipoUt nutsMapPai = (MapeamentoTipoUt) mapeamentoContainer.getObject(mapeamentoContainer.countObject() - 1);
-                nutsMapPai.addMapeamentoFilho(municipiomap);
-                mapeamentoContainer.addObject(municipiomap);
-            }
-            
-
-        }
-
+    @Override
+    public String toString() {
+        return "Mapeamento{" + "ut=" + ut + ", mapeamentosFilho=" + mapeamentosFilho + '}';
     }
     
+    
+
 }
