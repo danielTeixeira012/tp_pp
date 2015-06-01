@@ -6,8 +6,10 @@
 package Classes.unidade_territorial;
 
 import Classes.salario.Salario;
+import Classes.salario.gestorSalario;
 import Exceptions.UnidadeTerritorialException;
 import Interfaces.TipoUnidadeTerritorialContrato;
+import java.util.Arrays;
 
 /**
  *
@@ -17,26 +19,29 @@ public class UnidadeTerritorial extends UnidadeTerritorialException implements I
 
     private String nome;
     private TipoUnidadeTerritorial tipo;
-    private Salario[] salarios;
+    private gestorSalario gestaoSal;
 
-    public UnidadeTerritorial(String nome, TipoUnidadeTerritorial tipo,Salario[]salarios) {
+    public UnidadeTerritorial(String nome, TipoUnidadeTerritorial tipo) {
         this.nome = nome;
         this.tipo = tipo;
-        this.salarios=salarios;
     }
+
+    public gestorSalario getGestaoSal() {
+        return this.gestaoSal;
+    }
+
+    public void setGestaoSal(gestorSalario gestaoSal) {
+        this.gestaoSal = gestaoSal;
+    }
+    
+    
 
     public void setTipo(TipoUnidadeTerritorial tipo) {
         this.tipo = tipo;
     }
+    
 
-    public Salario[] getSalarios() {
-        return salarios;
-    }
-
-    public void setSalarios(Salario[] salarios) {
-        this.salarios = salarios;
-    }
-
+   
     @Override
     public String getNome() {
         return this.nome;
@@ -60,7 +65,8 @@ public class UnidadeTerritorial extends UnidadeTerritorialException implements I
 
     @Override
     public String toString() {
-        return "UnidadeTerritorial{" + "nome=" + nome + ", tipo=" + tipo + '}';
+        return "UnidadeTerritorial \n" + "nome:" + this.nome + "," + this.tipo.toString()+"\n"+Arrays.toString(this.gestaoSal.SalariosToString());
+        
     }
     
     

@@ -26,7 +26,7 @@ public class TipoUnidadeTerritorial implements Interfaces.TipoUnidadeTerritorial
 
     @Override
     public String toString() {
-        return "TipoUnidadeTerritorial{" + "tipo=" + tipo + '}';
+        return "tipo:" + tipo;
     }
 
     

@@ -7,7 +7,6 @@ package Classes.Mapeamento;
 
 import Classes.unidade_territorial.TipoUnidadeTerritorial;
 import Classes.unidade_territorial.UnidadeTerritorial;
-import Interfaces.UnidadeTerritorialContrato;
 import Resources.ContainerOfObjects;
 
 /**

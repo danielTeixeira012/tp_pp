@@ -23,6 +23,13 @@ public class Ano {
     public void setAno(int ano) {
         this.ano = ano;
     }
+
+    @Override
+    public String toString() {
+        return ""+this.ano; 
+    }
+    
+    
     
     
     

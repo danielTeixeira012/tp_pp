@@ -5,12 +5,11 @@
  */
 package Classes.salario;
 
-import Classes.unidade_territorial.GestaoUnidadeTerritorial;
-import Classes.unidade_territorial.UnidadeTerritorial;
 import Exceptions.RegistoSalarioException;
 import Interfaces.GestorSalariosContrato;
 import Interfaces.TipoUnidadeTerritorialContrato;
 import Interfaces.UnidadeTerritorialContrato;
+import Resources.ContainerOfObjects;
 
 /**
  *
@@ -23,6 +22,10 @@ public class gestorSalario extends Resources.ContainerOfObjects implements Gesto
 
     public gestorSalario(int size) {
         super(size);
+    }
+
+    public gestorSalario(Salario[] salarios) {
+        super(salarios);
     }
 
     @Override
@@ -39,30 +42,31 @@ public class gestorSalario extends Resources.ContainerOfObjects implements Gesto
 
     @Override
     public Object[] getSalarios(UnidadeTerritorialContrato[] utcs, Object[] os, Object[] os1) throws RegistoSalarioException {
-        gestorSalario tempContainer1 = new gestorSalario();
-        //tempContainer1.getObjects();
-        gestorSalario tempContainer2 = new gestorSalario();
-
-        for (int i = 0; i < utcs.length; i++) {
-            UnidadeTerritorial utTemp = (UnidadeTerritorial) utcs[i];
-            Salario[] sTemp = utTemp.getSalarios();
-            for (int z = 0; z < os1.length; z++) {
-                for (int t = 0; t < sTemp.length; t++) {
-                    if (sTemp[z].getGeneroSalario() == os1[z]) {
-                        tempContainer1.addObject(sTemp[z]);
-                    }
-                }
-            }
-            for (int j = 0; j < os.length; j++) {
-                for (int x = 0; x < tempContainer1.countObject(); x++) {
-                    if (sTemp[j].getAno() == os[x]) {
-                        tempContainer2.addObject(sTemp[j]);
-                    }
-                }
-            }
-        }
-
-        return tempContainer2.castVector(os);
+//        gestorSalario tempContainer1 = new gestorSalario();
+//        //tempContainer1.getObjects();
+//        gestorSalario tempContainer2 = new gestorSalario();
+//
+//        for (int i = 0; i < utcs.length; i++) {
+//            UnidadeTerritorial utTemp = (UnidadeTerritorial) utcs[i];
+//            Salario[] sTemp = utTemp.getGestaoSal().getgetSalarios();
+//            for (int z = 0; z < os1.length; z++) {
+//                for (int t = 0; t < sTemp.length; t++) {
+//                    if (sTemp[z].getGeneroSalario() == os1[z]) {
+//                        tempContainer1.addObject(sTemp[z]);
+//                    }
+//                }
+//            }
+//            for (int j = 0; j < os.length; j++) {
+//                for (int x = 0; x < tempContainer1.countObject(); x++) {
+//                    if (sTemp[j].getAno() == os[x]) {
+//                        tempContainer2.addObject(sTemp[j]);
+//                    }
+//                }
+//            }
+//        }
+//
+//        return tempContainer2.castVector(os);
+        return null;
     }
 
     @Override
@@ -73,6 +77,28 @@ public class gestorSalario extends Resources.ContainerOfObjects implements Gesto
     @Override
     public Object getSalario(int i) throws RegistoSalarioException {
         return this.getObject(i);
+    }
+
+    public String SalarioToString(Salario salario) {
+        return salario.toString();
+    }
+
+    public String[] SalariosToString() {
+        //instancia um container de strings
+        ContainerOfObjects stringContainer = new ContainerOfObjects();
+        
+        //adiciona todas as strings ao container
+        for (Salario salario : (Salario[]) this.getObjects()) {
+            stringContainer.addObject(this.SalarioToString(salario));
+        }
+        //converte os objetos em String
+        String[] str = new String[stringContainer.countObject()];
+        for (int i = 0; i < stringContainer.countObject(); i++) {
+            str[i] = (String) stringContainer.getObject(i);
+        }
+
+        return str;
+
     }
 
 }

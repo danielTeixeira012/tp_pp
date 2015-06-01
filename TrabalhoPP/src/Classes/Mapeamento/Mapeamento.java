@@ -6,7 +6,6 @@
 package Classes.Mapeamento;
 
 import Interfaces.UnidadeTerritorialContrato;
-import Resources.ContainerOfObjects;
 
 /**
  *
@@ -48,7 +47,8 @@ public class Mapeamento {
 
     @Override
     public String toString() {
-        return "Mapeamento{" + "ut=" + ut + ", mapeamentosFilho=" + mapeamentosFilho + '}';
+        
+        return this.ut.toString();
     }
     
     

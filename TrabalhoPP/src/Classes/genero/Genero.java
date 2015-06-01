@@ -10,17 +10,24 @@ package Classes.genero;
  * @author aluno
  */
 public class Genero {
-    private GeneroEnum genero;
+    private String genero;
 
-    public Genero(GeneroEnum genero) {
+    public Genero(String genero) {
         this.genero = genero;
     }
 
-    public GeneroEnum getGenero() {
+    public String getGenero() {
         return genero;
     }
 
-    public void setGenero(GeneroEnum genero) {
+    public void setGenero(String genero) {
         this.genero = genero;
     }
+
+    @Override
+    public String toString() {
+        return this.genero;
+    }
+    
+    
 }

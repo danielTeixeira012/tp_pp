@@ -8,11 +8,12 @@ package trabalhopp;
 import Classes.Mapeamento.MapeamentoDemo;
 import Classes.ano.Ano;
 import Classes.genero.Genero;
-import Classes.genero.GeneroEnum;
 import Classes.salario.Salario;
+import Classes.salario.gestorSalario;
 import Classes.unidade_territorial.GestaoUnidadeTerritorial;
 import Classes.unidade_territorial.TipoUnidadeTerritorial;
 import Classes.unidade_territorial.UnidadeTerritorial;
+import Exceptions.RegistoSalarioException;
 import Exceptions.UnidadeTerritorialException;
 
 /**
@@ -24,17 +25,18 @@ public class TrabalhoPP {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws UnidadeTerritorialException {
+    public static void main(String[] args) throws UnidadeTerritorialException, RegistoSalarioException {
         // TODO code application logic here
         TipoUnidadeTerritorial nuts = new TipoUnidadeTerritorial("NUTS");
         TipoUnidadeTerritorial nuts1 = new TipoUnidadeTerritorial("NUTS1");
         TipoUnidadeTerritorial nuts2 = new TipoUnidadeTerritorial("NUTS2");
         TipoUnidadeTerritorial nuts3 = new TipoUnidadeTerritorial("NUTS3");
         TipoUnidadeTerritorial municipio = new TipoUnidadeTerritorial("MUNICIPIO");
-        
-        Genero masc = new Genero(GeneroEnum.Masculino);
-        Genero fem = new Genero(GeneroEnum.Feminino);
-        
+
+        Genero masc = new Genero("Masculino");
+        Genero fem = new Genero("Feminino");
+        Genero total = new Genero("Total");
+
         Ano ano2002 = new Ano(2002);
         Ano ano2003 = new Ano(2003);
         Ano ano2004 = new Ano(2004);
@@ -47,25 +49,30 @@ public class TrabalhoPP {
         Ano ano2011 = new Ano(2011);
         Ano ano2012 = new Ano(2012);
         Ano ano2013 = new Ano(2013);
+
+        UnidadeTerritorial utPortugal = new UnidadeTerritorial("Portugal", nuts);
+        gestorSalario gestorSal = new gestorSalario();
+        utPortugal.setGestaoSal(gestorSal);
+        Salario sal1 = new Salario(ano2002, masc, 500.1f, utPortugal);
+        Salario sal2 = new Salario(ano2002, fem, 400.2f, utPortugal);
+        Salario sal3 = new Salario(ano2002, total, 450.5f, utPortugal);
+
+        utPortugal.getGestaoSal().addRegistoSalario(sal1);
+        utPortugal.getGestaoSal().addRegistoSalario(sal2);
+        utPortugal.getGestaoSal().addRegistoSalario(sal3);
+
+        UnidadeTerritorial un2 = new UnidadeTerritorial("Continente", nuts1);
         
-        Salario s1 = new Salario(ano2002, masc, 500.1f);
-        Salario s2 = new Salario(ano2002, masc, 800.1f);
-        Salario s3 = new Salario(ano2002, masc, 640.1f);
-        Salario s4 = new Salario(ano2002, masc, 320.1f);
-        Salario[] as1 = {s1,s2,s3,s4};
         
-        
-        UnidadeTerritorial un1 = new UnidadeTerritorial("Portugal", nuts, as1);
-        UnidadeTerritorial un2 = new UnidadeTerritorial("Continente", nuts1, as1);
-        UnidadeTerritorial un3 = new UnidadeTerritorial("Norte", nuts2, as1);
-        UnidadeTerritorial un4 = new UnidadeTerritorial("Tamega", nuts3, as1);
-        UnidadeTerritorial un5 = new UnidadeTerritorial("Amarante", municipio, as1);
-        UnidadeTerritorial un6 = new UnidadeTerritorial("Felgueiras", municipio, as1);
-        UnidadeTerritorial un7 = new UnidadeTerritorial("Penafiel", municipio, as1);
-        UnidadeTerritorial un8 = new UnidadeTerritorial("Madeira", nuts1, as1);
-        
+        UnidadeTerritorial un3 = new UnidadeTerritorial("Norte", nuts2);
+        UnidadeTerritorial un4 = new UnidadeTerritorial("Tamega", nuts3);
+        UnidadeTerritorial un5 = new UnidadeTerritorial("Amarante", municipio);
+        UnidadeTerritorial un6 = new UnidadeTerritorial("Felgueiras", municipio);
+        UnidadeTerritorial un7 = new UnidadeTerritorial("Penafiel", municipio);
+        UnidadeTerritorial un8 = new UnidadeTerritorial("Madeira", nuts1);
+
         GestaoUnidadeTerritorial gut = new GestaoUnidadeTerritorial();
-        gut.adicionarUT(un1);
+        gut.adicionarUT(utPortugal);
         gut.adicionarUT(un2);
         gut.adicionarUT(un3);
         gut.adicionarUT(un4);
@@ -73,26 +80,10 @@ public class TrabalhoPP {
         gut.adicionarUT(un6);
         gut.adicionarUT(un7);
         gut.adicionarUT(un8);
-        
-         
+
         MapeamentoDemo m1 = new MapeamentoDemo(gut.getUts());
         m1.printAll();
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-         
-        
-        
-        
-        
-        
+
     }
-    
+
 }
