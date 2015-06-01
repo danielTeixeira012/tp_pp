@@ -21,15 +21,13 @@ public class Salario extends RegistoSalarioException {
     private float salario;
     private UnidadeTerritorialContrato ut;
 
-  
-    public Salario(Ano ano, Genero generoSalario, float salario,UnidadeTerritorialContrato ut) {
+    public Salario(Ano ano, Genero generoSalario, float salario, UnidadeTerritorialContrato ut) {
 
         this.ano = ano;
         this.generoSalario = generoSalario;
         this.salario = salario;
-        this.ut=ut;
+        this.ut = ut;
     }
-
 
     public Ano getAno() {
         return ano;
@@ -62,17 +60,10 @@ public class Salario extends RegistoSalarioException {
     public void setUt(UnidadeTerritorialContrato ut) {
         this.ut = ut;
     }
-    
 
     @Override
     public String toString() {
-        return "\nSalario:\n" + "ano=" + this.ano.toString() + ", generoSalario=" + this.generoSalario.toString() + ", salario=" + salario ;
+        return "\nSalario:\n" + "ano=" + this.ano.toString() + ", generoSalario=" + this.generoSalario.toString() + ", salario=" + salario;
     }
-    
-    
-    
-    
-    
-    
 
 }
