@@ -10,5 +10,25 @@ package Classes.genero;
  * @author aluno
  */
 public class GestaoGenero extends Resources.ContainerOfObjects {
-    
+
+    public GestaoGenero(Genero[] generos) {
+        super(generos);
+    }
+
+    public GestaoGenero() {
+    }
+
+    public GestaoGenero(int size) {
+        super(size);
+    }
+
+    public static Genero[] castToGeneros(Object[] objVector) {
+        Genero[] generos = new Genero[objVector.length];
+        for (int i = 0; i < objVector.length; i++) {
+            generos[i] = (Genero) objVector[i];
+        }
+
+        return generos;
+    }
+
 }

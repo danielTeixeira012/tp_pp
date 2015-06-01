@@ -5,11 +5,15 @@
  */
 package Classes.salario;
 
+import Classes.ano.Ano;
+import Classes.genero.Genero;
+import Classes.genero.GestaoGenero;
+import Classes.unidade_territorial.TipoUnidadeTerritorial;
+import Classes.unidade_territorial.UnidadeTerritorial;
 import Exceptions.RegistoSalarioException;
 import Interfaces.GestorSalariosContrato;
 import Interfaces.TipoUnidadeTerritorialContrato;
 import Interfaces.UnidadeTerritorialContrato;
-import Resources.ContainerOfObjects;
 
 /**
  *
@@ -42,36 +46,50 @@ public class gestorSalario extends Resources.ContainerOfObjects implements Gesto
 
     @Override
     public Object[] getSalarios(UnidadeTerritorialContrato[] utcs, Object[] os, Object[] os1) throws RegistoSalarioException {
-//        gestorSalario tempContainer1 = new gestorSalario();
-//        //tempContainer1.getObjects();
-//        gestorSalario tempContainer2 = new gestorSalario();
-//
-//        for (int i = 0; i < utcs.length; i++) {
-//            UnidadeTerritorial utTemp = (UnidadeTerritorial) utcs[i];
-//            Salario[] sTemp = utTemp.getGestaoSal().getgetSalarios();
-//            for (int z = 0; z < os1.length; z++) {
-//                for (int t = 0; t < sTemp.length; t++) {
-//                    if (sTemp[z].getGeneroSalario() == os1[z]) {
-//                        tempContainer1.addObject(sTemp[z]);
-//                    }
-//                }
-//            }
-//            for (int j = 0; j < os.length; j++) {
-//                for (int x = 0; x < tempContainer1.countObject(); x++) {
-//                    if (sTemp[j].getAno() == os[x]) {
-//                        tempContainer2.addObject(sTemp[j]);
-//                    }
-//                }
-//            }
-//        }
-//
-//        return tempContainer2.castVector(os);
+        gestorSalario tempGestor = new gestorSalario();
+        for (UnidadeTerritorial ut : (UnidadeTerritorial[]) utcs) {
+            for (Salario salario : ut.getGestaoSal().getSalarios()) {
+                for (Genero genero : (Genero[]) os1) {
+                    if (genero.getGenero().equals(salario.getGeneroSalario().getGenero())) {
+                        for (Ano ano : (Ano[]) os) {
+                            if (ano.getAno() == salario.getAno().getAno()) {
+                                System.out.println(salario.toString());
+                            }
+                        }
+                    }
+                }
+            }
+
+        }
         return null;
     }
 
     @Override
     public Object[] getSalarios(Object[] os, Object[] os1, TipoUnidadeTerritorialContrato tutc) throws RegistoSalarioException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        TipoUnidadeTerritorial tutcCasted = (TipoUnidadeTerritorial) tutc;
+        for (Salario salario : this.getSalarios()) {
+            for (Genero genero : (Genero[]) os) {
+                if (genero.getGenero().equals(salario.getGeneroSalario().getGenero())) {
+                    for (Ano ano : (Ano[]) os1) {
+                        if (ano.getAno() == salario.getAno().getAno()) {
+                            UnidadeTerritorial ut = (UnidadeTerritorial) salario.getUt();
+                            if (ut.getTipoUt().equals(tutcCasted.getTipo())) {
+                                System.out.println(salario.toString());
+
+                            }
+                        }
+
+                    }
+
+                }
+            }
+
+        }
+        return null;
+    }
+
+    public Salario[] getSalarios() {
+        return gestorSalario.castToSalarios(this.getObjects());
     }
 
     @Override
@@ -82,11 +100,10 @@ public class gestorSalario extends Resources.ContainerOfObjects implements Gesto
     public String SalarioToString(Salario salario) {
         return salario.toString();
     }
-    
+
     //Faz o cast de um vetor para um vetor de Gestao de Mapeamento
-    
     public static Salario[] castToSalarios(Object[] objVector) {
-        Salario[] salarios= new Salario[objVector.length];
+        Salario[] salarios = new Salario[objVector.length];
         for (int i = 0; i < objVector.length; i++) {
             salarios[i] = (Salario) objVector[i];
         }
@@ -94,11 +111,9 @@ public class gestorSalario extends Resources.ContainerOfObjects implements Gesto
         return salarios;
     }
 
-
-
     public String SalariosToString() {
         String str = "";
-        for (Salario salario :castToSalarios(this.getObjects())) {
+        for (Salario salario : castToSalarios(this.getObjects())) {
             str = str + this.SalarioToString(salario);
         }
         return str;

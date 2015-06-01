@@ -90,17 +90,16 @@ public class MapeamentoDemo {
 
     }
 
-    public ContainerOfObjects[] getMapsContainers() {
+    public GestaoMapeamento[] getMapsContainers() {
         return this.MapsContainer;
     }
 
     public void printAll() {
-        //Precorre vetor de gestao de mapeamentos
-        for (GestaoMapeamento mapContainer : (GestaoMapeamento[]) this.MapsContainer) {
-            //precorre vetor de mapas de cada gestao de mapeamentos
-            for (Mapeamento map : (Mapeamento[]) mapContainer.getMaps()) {
-                System.out.println(map.getUt().toString());
-            }
+
+        for (Mapeamento map : this.MapsContainer[0].getMaps()) {
+            System.out.println("-------------------------------------------------------------------------");
+            System.out.println(map.toString());
+            System.out.println("-------------------------------------------------------------------------");
 
         }
     }

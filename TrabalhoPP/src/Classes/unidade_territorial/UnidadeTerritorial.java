@@ -8,7 +8,6 @@ package Classes.unidade_territorial;
 import Classes.salario.gestorSalario;
 import Exceptions.UnidadeTerritorialException;
 import Interfaces.TipoUnidadeTerritorialContrato;
-import java.util.Arrays;
 
 /**
  *
@@ -32,15 +31,11 @@ public class UnidadeTerritorial extends UnidadeTerritorialException implements I
     public void setGestaoSal(gestorSalario gestaoSal) {
         this.gestaoSal = gestaoSal;
     }
-    
-    
 
     public void setTipo(TipoUnidadeTerritorial tipo) {
         this.tipo = tipo;
     }
-    
 
-   
     @Override
     public String getNome() {
         return this.nome;
@@ -53,7 +48,7 @@ public class UnidadeTerritorial extends UnidadeTerritorialException implements I
 
     @Override
     public void setTipo(TipoUnidadeTerritorialContrato tutc) {
-        this.tipo= (TipoUnidadeTerritorial) tutc;
+        this.tipo = (TipoUnidadeTerritorial) tutc;
     }
 
     @Override
@@ -62,12 +57,16 @@ public class UnidadeTerritorial extends UnidadeTerritorialException implements I
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    public String getTipoUt() {
+
+        return this.tipo.getTipo();
+
+    }
+
     @Override
     public String toString() {
-        return "UnidadeTerritorial \n" + "nome:" + this.nome + "," + this.tipo.toString()+"\n"+ this.gestaoSal.SalariosToString();
-        
+        return "\nUnidadeTerritorial \n" + "nome:" + this.nome + "," + this.tipo.toString() + this.gestaoSal.SalariosToString();
+
     }
-    
-    
 
 }

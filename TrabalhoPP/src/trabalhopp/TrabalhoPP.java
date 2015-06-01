@@ -61,7 +61,6 @@ public class TrabalhoPP {
         utPortugal.getGestaoSal().addRegistoSalario(sal2);
         utPortugal.getGestaoSal().addRegistoSalario(sal3);
 
-        
         UnidadeTerritorial utContinente = new UnidadeTerritorial("Continente", nuts1);
         gestorSalario gestorSal2 = new gestorSalario();
         utContinente.setGestaoSal(gestorSal2);
@@ -72,43 +71,40 @@ public class TrabalhoPP {
         utContinente.getGestaoSal().addRegistoSalario(sal4);
         utContinente.getGestaoSal().addRegistoSalario(sal5);
         utContinente.getGestaoSal().addRegistoSalario(sal6);
-        
-        
+
         UnidadeTerritorial utNorte = new UnidadeTerritorial("Norte", nuts2);
         gestorSalario gestorSal3 = new gestorSalario();
         utNorte.setGestaoSal(gestorSal3);
         Salario sal7 = new Salario(ano2002, masc, 200.65f, utNorte);
-        Salario sal8 = new Salario(ano2002, fem,3210.2f, utNorte);
+        Salario sal8 = new Salario(ano2002, fem, 3210.2f, utNorte);
         Salario sal9 = new Salario(ano2002, total, 240.5f, utNorte);
 
         utNorte.getGestaoSal().addRegistoSalario(sal7);
         utNorte.getGestaoSal().addRegistoSalario(sal8);
         utNorte.getGestaoSal().addRegistoSalario(sal9);
-        
+
         UnidadeTerritorial utTamega = new UnidadeTerritorial("Tamega", nuts3);
         gestorSalario gestorSal4 = new gestorSalario();
         utTamega.setGestaoSal(gestorSal4);
         Salario sal10 = new Salario(ano2002, masc, 800.1f, utTamega);
-        Salario sal11= new Salario(ano2002, fem, 700.2f, utTamega);
+        Salario sal11 = new Salario(ano2002, fem, 700.2f, utTamega);
         Salario sal12 = new Salario(ano2002, total, 640.5f, utTamega);
 
         utTamega.getGestaoSal().addRegistoSalario(sal10);
         utTamega.getGestaoSal().addRegistoSalario(sal11);
         utTamega.getGestaoSal().addRegistoSalario(sal12);
-        
-        
+
         UnidadeTerritorial utAmarante = new UnidadeTerritorial("Amarante", municipio);
         gestorSalario gestorSal5 = new gestorSalario();
         utAmarante.setGestaoSal(gestorSal5);
-        Salario sal13 = new Salario(ano2002, masc, 620.1f, utAmarante);
-        Salario sal14 = new Salario(ano2002, fem, 510.2f, utAmarante);
-        Salario sal15 = new Salario(ano2002, total, 440.5f, utAmarante);
+        Salario sal13 = new Salario(ano2003, fem, 620.1f, utAmarante);
+        Salario sal14 = new Salario(ano2003, fem, 510.2f, utAmarante);
+        Salario sal15 = new Salario(ano2003, fem, 440.5f, utAmarante);
 
         utAmarante.getGestaoSal().addRegistoSalario(sal13);
         utAmarante.getGestaoSal().addRegistoSalario(sal14);
         utAmarante.getGestaoSal().addRegistoSalario(sal15);
-        
-        
+
         UnidadeTerritorial utFelgueiras = new UnidadeTerritorial("Felgueiras", municipio);
         gestorSalario gestorSal6 = new gestorSalario();
         utFelgueiras.setGestaoSal(gestorSal6);
@@ -119,7 +115,7 @@ public class TrabalhoPP {
         utFelgueiras.getGestaoSal().addRegistoSalario(sal16);
         utFelgueiras.getGestaoSal().addRegistoSalario(sal17);
         utFelgueiras.getGestaoSal().addRegistoSalario(sal18);
-        
+
         UnidadeTerritorial utPenafiel = new UnidadeTerritorial("Penafiel", municipio);
         gestorSalario gestorSal7 = new gestorSalario();
         utPenafiel.setGestaoSal(gestorSal7);
@@ -130,7 +126,7 @@ public class TrabalhoPP {
         utPenafiel.getGestaoSal().addRegistoSalario(sal19);
         utPenafiel.getGestaoSal().addRegistoSalario(sal20);
         utPenafiel.getGestaoSal().addRegistoSalario(sal21);
-        
+
         UnidadeTerritorial utMadeira = new UnidadeTerritorial("Madeira", nuts1);
         gestorSalario gestorSal8 = new gestorSalario();
         utMadeira.setGestaoSal(gestorSal8);
@@ -151,11 +147,16 @@ public class TrabalhoPP {
         gut.adicionarUT(utFelgueiras);
         gut.adicionarUT(utPenafiel);
         gut.adicionarUT(utMadeira);
-        
 
         MapeamentoDemo m1 = new MapeamentoDemo(gut.getUts());
-        m1.printAll();
+        //m1.printAll();
 
+        gestorSalario gestorSalteste = new gestorSalario();
+
+        UnidadeTerritorial[] uts = {utAmarante};
+        Ano[] anos = {ano2003};
+        Genero[] generos = {fem};
+        utAmarante.getGestaoSal().getSalarios(generos, anos, nuts3);
     }
 
 }
