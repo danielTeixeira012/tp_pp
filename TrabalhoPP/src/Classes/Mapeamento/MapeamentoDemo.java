@@ -104,4 +104,15 @@ public class MapeamentoDemo {
         }
     }
 
+    public void printMap(int i) {
+
+        for (Mapeamento map : this.MapsContainer[i].getMaps()) {
+            System.out.println("-------------------------------------------------------------------------");
+            System.out.println(map.toString());
+            System.out.println("-------------------------------------------------------------------------");
+
+        }
+
+    }
+
 }

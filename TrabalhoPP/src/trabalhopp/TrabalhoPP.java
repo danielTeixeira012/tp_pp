@@ -13,9 +13,13 @@ import Classes.salario.gestorSalario;
 import Classes.unidade_territorial.GestaoUnidadeTerritorial;
 import Classes.unidade_territorial.TipoUnidadeTerritorial;
 import Classes.unidade_territorial.UnidadeTerritorial;
+import Enumerations.Language;
+import Exceptions.CoordinatesNotFound;
 import Exceptions.RegistoSalarioException;
 import Exceptions.UnidadeTerritorialException;
 import Interfaces.GestorUnidadeTerritorialContrato;
+import Resources.Location;
+import java.io.IOException;
 
 /**
  *
@@ -26,7 +30,7 @@ public class TrabalhoPP {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws UnidadeTerritorialException, RegistoSalarioException {
+    public static void main(String[] args) throws UnidadeTerritorialException, RegistoSalarioException, CoordinatesNotFound, IOException {
         // TODO code application logic here
         TipoUnidadeTerritorial nuts = new TipoUnidadeTerritorial("NUTS");
         TipoUnidadeTerritorial nuts1 = new TipoUnidadeTerritorial("NUTS1");
@@ -150,18 +154,11 @@ public class TrabalhoPP {
         gut.adicionarUT(utMadeira);
 
         MapeamentoDemo m1 = new MapeamentoDemo(gut.getUts());
-        //m1.printAll();
+        m1.printMap(0);
 
         gestorSalario gestorSalteste = new gestorSalario();
 
-        UnidadeTerritorial[] uts = {utAmarante};
-        Ano[] anos = {ano2003};
-        Genero[] generos = {fem};
-        utAmarante.getGestaoSal().getSalarios(generos, anos, nuts3);
-
-        gut.getUTsPorTipo(nuts);
-        
-        gut.listarUT();
+        Location local = new Location("Amarante,Porto,Portugal", Language.PT);
 
     }
 
