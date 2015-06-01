@@ -15,6 +15,7 @@ import Classes.unidade_territorial.TipoUnidadeTerritorial;
 import Classes.unidade_territorial.UnidadeTerritorial;
 import Exceptions.RegistoSalarioException;
 import Exceptions.UnidadeTerritorialException;
+import Interfaces.GestorUnidadeTerritorialContrato;
 
 /**
  *
@@ -157,6 +158,11 @@ public class TrabalhoPP {
         Ano[] anos = {ano2003};
         Genero[] generos = {fem};
         utAmarante.getGestaoSal().getSalarios(generos, anos, nuts3);
+
+        gut.getUTsPorTipo(nuts);
+        
+        gut.listarUT();
+
     }
 
 }

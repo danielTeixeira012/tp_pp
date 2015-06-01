@@ -6,7 +6,7 @@
 package Classes.Mapeamento;
 
 import Classes.unidade_territorial.TipoUnidadeTerritorial;
-import Classes.unidade_territorial.UnidadeTerritorial;
+import Interfaces.UnidadeTerritorialContrato;
 import Resources.ContainerOfObjects;
 
 /**
@@ -17,7 +17,7 @@ public class MapeamentoDemo {
 
     private GestaoMapeamento[] MapsContainer;
 
-    public MapeamentoDemo(UnidadeTerritorial[] uts) {
+    public MapeamentoDemo(UnidadeTerritorialContrato[] uts) {
 
         //vetor de gestao de mapeamento
         ContainerOfObjects ContainerGestaoMapeamentos = new ContainerOfObjects();
@@ -32,7 +32,7 @@ public class MapeamentoDemo {
         //vetor de Municipios
         GestaoMapeamento municipiosMaps = new GestaoMapeamento();
 
-        for (UnidadeTerritorial ut : uts) {
+        for (UnidadeTerritorialContrato ut : uts) {
             TipoUnidadeTerritorial tut = (TipoUnidadeTerritorial) ut.getTipo();
             if ("NUTS".equals(tut.getTipo())) {
                 Mapeamento nutsMap = new Mapeamento(ut);

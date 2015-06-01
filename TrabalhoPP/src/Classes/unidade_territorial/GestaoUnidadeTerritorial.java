@@ -9,7 +9,6 @@ import Exceptions.UnidadeTerritorialException;
 import Interfaces.GestorUnidadeTerritorialContrato;
 import Interfaces.TipoUnidadeTerritorialContrato;
 import Interfaces.UnidadeTerritorialContrato;
-import Resources.ContainerOfObjects;
 
 /**
  *
@@ -56,7 +55,8 @@ public class GestaoUnidadeTerritorial extends Resources.ContainerOfObjects imple
      * @throws UnidadeTerritorialException
      */
     public void listarUTindividual(UnidadeTerritorialContrato ut) throws UnidadeTerritorialException {
-        ut.toString();
+        UnidadeTerritorial castedUt = (UnidadeTerritorial) ut;
+        System.out.println(castedUt.toString());
     }
 
     /**
@@ -66,7 +66,7 @@ public class GestaoUnidadeTerritorial extends Resources.ContainerOfObjects imple
      */
     @Override
     public void listarUT() throws UnidadeTerritorialException {
-        for (UnidadeTerritorial ut : (UnidadeTerritorial[]) super.getObjects()) {
+        for (UnidadeTerritorialContrato ut : (UnidadeTerritorialContrato[]) this.getUts()) {
             this.listarUTindividual(ut);
         }
 
@@ -80,7 +80,7 @@ public class GestaoUnidadeTerritorial extends Resources.ContainerOfObjects imple
      */
     public void listarUTs(UnidadeTerritorialContrato[] uts) throws UnidadeTerritorialException {
 
-        for (UnidadeTerritorial ut : (UnidadeTerritorial[]) uts) {
+        for (UnidadeTerritorialContrato ut : (UnidadeTerritorialContrato[]) uts) {
             this.listarUTindividual(ut);
         }
 
@@ -102,10 +102,10 @@ public class GestaoUnidadeTerritorial extends Resources.ContainerOfObjects imple
         return (UnidadeTerritorialContrato) super.getObject(i);
     }
 
-    public UnidadeTerritorial[] getUts() {
-        UnidadeTerritorial[] uts = new UnidadeTerritorial[super.countObject()];
-        for (int i = 0; i < super.countObject(); i++) {
-            uts[i] = (UnidadeTerritorial) super.getObject(i);
+    public UnidadeTerritorialContrato[] getUts() throws UnidadeTerritorialException {
+        UnidadeTerritorialContrato[] uts = new UnidadeTerritorialContrato[this.getTamanho()];
+        for (int i = 0; i < this.getTamanho(); i++) {
+            uts[i] = (UnidadeTerritorial) this.getUT(i);
         }
 
         return uts;
@@ -116,12 +116,12 @@ public class GestaoUnidadeTerritorial extends Resources.ContainerOfObjects imple
         GestaoUnidadeTerritorial tempContainer = new GestaoUnidadeTerritorial();
         tempContainer.getObjects();
 
-        for (UnidadeTerritorial ut : (UnidadeTerritorial[]) super.getObjects()) {
+        for (UnidadeTerritorialContrato ut : this.getUts()) {
             if (ut.getTipo() == tutc) {
                 tempContainer.addObject(ut);
             }
         }
-        UnidadeTerritorialContrato[] toReturn = (UnidadeTerritorialContrato[]) tempContainer.getObjects();
+        UnidadeTerritorialContrato[] toReturn = (UnidadeTerritorialContrato[]) tempContainer.getUts();
         return toReturn;
 
     }
@@ -134,6 +134,15 @@ public class GestaoUnidadeTerritorial extends Resources.ContainerOfObjects imple
     @Override
     public int getPosicao(UnidadeTerritorialContrato utc) throws UnidadeTerritorialException {
         return findObject(utc);
+    }
+
+    public static UnidadeTerritorialContrato[] castToUnidadeTerritorial(Object[] objVector) {
+        UnidadeTerritorialContrato[] uts = new UnidadeTerritorialContrato[objVector.length];
+        for (int i = 0; i < objVector.length; i++) {
+            uts[i] = (UnidadeTerritorialContrato) objVector[i];
+        }
+
+        return uts;
     }
 
 }
