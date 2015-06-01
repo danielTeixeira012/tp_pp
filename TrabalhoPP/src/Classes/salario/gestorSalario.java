@@ -33,7 +33,8 @@ public class gestorSalario extends Resources.ContainerOfObjects implements Gesto
     }
 
     @Override
-    public boolean addRegistoSalario(Object o) throws RegistoSalarioException {
+    public boolean addRegistoSalario(Object o) throws RegistoSalarioException {      
+        if(super.findObject(o) == -1 || o == null){
         boolean toReturn = this.addObject(o);
         if (toReturn == true) {
             System.out.println("O salario foi adicionado com sucesso");
@@ -41,6 +42,9 @@ public class gestorSalario extends Resources.ContainerOfObjects implements Gesto
         } else {
             System.out.println("O salario não foi adicionado!!!");
             return toReturn;
+        }
+        }else{
+            throw new RegistoSalarioException("A unidade territorial já se encontra no vetor");
         }
     }
 
