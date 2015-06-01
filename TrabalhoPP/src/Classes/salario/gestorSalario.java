@@ -7,7 +7,6 @@ package Classes.salario;
 
 import Classes.ano.Ano;
 import Classes.genero.Genero;
-import Classes.genero.GestaoGenero;
 import Classes.unidade_territorial.TipoUnidadeTerritorial;
 import Classes.unidade_territorial.UnidadeTerritorial;
 import Exceptions.RegistoSalarioException;
@@ -53,7 +52,7 @@ public class gestorSalario extends Resources.ContainerOfObjects implements Gesto
                     if (genero.getGenero().equals(salario.getGeneroSalario().getGenero())) {
                         for (Ano ano : (Ano[]) os) {
                             if (ano.getAno() == salario.getAno().getAno()) {
-                                System.out.println(salario.toString());
+                                tempGestor.addRegistoSalario(salario);
                             }
                         }
                     }
@@ -61,12 +60,13 @@ public class gestorSalario extends Resources.ContainerOfObjects implements Gesto
             }
 
         }
-        return null;
+        return tempGestor.getSalarios();
     }
 
     @Override
     public Object[] getSalarios(Object[] os, Object[] os1, TipoUnidadeTerritorialContrato tutc) throws RegistoSalarioException {
         TipoUnidadeTerritorial tutcCasted = (TipoUnidadeTerritorial) tutc;
+        gestorSalario tempGestor = new gestorSalario();
         for (Salario salario : this.getSalarios()) {
             for (Genero genero : (Genero[]) os) {
                 if (genero.getGenero().equals(salario.getGeneroSalario().getGenero())) {
@@ -74,7 +74,7 @@ public class gestorSalario extends Resources.ContainerOfObjects implements Gesto
                         if (ano.getAno() == salario.getAno().getAno()) {
                             UnidadeTerritorial ut = (UnidadeTerritorial) salario.getUt();
                             if (ut.getTipoUt().equals(tutcCasted.getTipo())) {
-                                System.out.println(salario.toString());
+                                tempGestor.addRegistoSalario(salario);
 
                             }
                         }
