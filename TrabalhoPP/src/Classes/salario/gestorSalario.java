@@ -82,21 +82,25 @@ public class gestorSalario extends Resources.ContainerOfObjects implements Gesto
     public String SalarioToString(Salario salario) {
         return salario.toString();
     }
-
-    public String[] SalariosToString() {
-        //instancia um container de strings
-        ContainerOfObjects stringContainer = new ContainerOfObjects();
-        
-        //adiciona todas as strings ao container
-        for (Salario salario : (Salario[]) this.getObjects()) {
-            stringContainer.addObject(this.SalarioToString(salario));
-        }
-        //converte os objetos em String
-        String[] str = new String[stringContainer.countObject()];
-        for (int i = 0; i < stringContainer.countObject(); i++) {
-            str[i] = (String) stringContainer.getObject(i);
+    
+    //Faz o cast de um vetor para um vetor de Gestao de Mapeamento
+    
+    public static Salario[] castToSalarios(Object[] objVector) {
+        Salario[] salarios= new Salario[objVector.length];
+        for (int i = 0; i < objVector.length; i++) {
+            salarios[i] = (Salario) objVector[i];
         }
 
+        return salarios;
+    }
+
+
+
+    public String SalariosToString() {
+        String str = "";
+        for (Salario salario :castToSalarios(this.getObjects())) {
+            str = str + this.SalarioToString(salario);
+        }
         return str;
 
     }

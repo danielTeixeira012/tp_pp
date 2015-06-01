@@ -5,7 +5,6 @@
  */
 package Classes.unidade_territorial;
 
-import Classes.salario.Salario;
 import Classes.salario.gestorSalario;
 import Exceptions.UnidadeTerritorialException;
 import Interfaces.TipoUnidadeTerritorialContrato;
@@ -65,7 +64,7 @@ public class UnidadeTerritorial extends UnidadeTerritorialException implements I
 
     @Override
     public String toString() {
-        return "UnidadeTerritorial \n" + "nome:" + this.nome + "," + this.tipo.toString()+"\n"+Arrays.toString(this.gestaoSal.SalariosToString());
+        return "UnidadeTerritorial \n" + "nome:" + this.nome + "," + this.tipo.toString()+"\n"+ this.gestaoSal.SalariosToString();
         
     }
     
