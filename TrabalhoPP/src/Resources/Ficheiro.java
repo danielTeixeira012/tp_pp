@@ -14,6 +14,6 @@ import java.io.InputStreamReader;
  * @author danielteixeira
  */
 public class Ficheiro {
-    //BufferedReader b = new BufferedReader(new InputStreamReader(new FileInputStream(<<file>>), "ISO-8859-1"));
+    //BufferedReader b = new BufferedReader(new InputStreamReader(new FileInputStream("DadosSuporte.csv"), "ISO-8859-1"));
     
 }

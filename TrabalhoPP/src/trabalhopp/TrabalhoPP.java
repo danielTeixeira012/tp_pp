@@ -57,12 +57,12 @@ public class TrabalhoPP {
         
         UnidadeTerritorial un1 = new UnidadeTerritorial("Portugal", nuts, as1);
         UnidadeTerritorial un2 = new UnidadeTerritorial("Continente", nuts1, as1);
-        UnidadeTerritorial un3 = new UnidadeTerritorial("Madeira", nuts1, as1);
-        UnidadeTerritorial un4 = new UnidadeTerritorial("Norte", nuts2, as1);
-        UnidadeTerritorial un5 = new UnidadeTerritorial("Tamega", nuts3, as1);
-        UnidadeTerritorial un6 = new UnidadeTerritorial("Amarante", municipio, as1);
-        UnidadeTerritorial un7 = new UnidadeTerritorial("Felgueiras", municipio, as1);
-        UnidadeTerritorial un8 = new UnidadeTerritorial("Penafiel", municipio, as1);
+        UnidadeTerritorial un3 = new UnidadeTerritorial("Norte", nuts2, as1);
+        UnidadeTerritorial un4 = new UnidadeTerritorial("Tamega", nuts3, as1);
+        UnidadeTerritorial un5 = new UnidadeTerritorial("Amarante", municipio, as1);
+        UnidadeTerritorial un6 = new UnidadeTerritorial("Felgueiras", municipio, as1);
+        UnidadeTerritorial un7 = new UnidadeTerritorial("Penafiel", municipio, as1);
+        UnidadeTerritorial un8 = new UnidadeTerritorial("Madeira", nuts1, as1);
         
         GestaoUnidadeTerritorial gut = new GestaoUnidadeTerritorial();
         gut.adicionarUT(un1);
