@@ -5,6 +5,7 @@
  */
 package Classes.unidade_territorial;
 
+import Exceptions.RegistoSalarioException;
 import Exceptions.UnidadeTerritorialException;
 import Interfaces.GestorUnidadeTerritorialContrato;
 import Interfaces.TipoUnidadeTerritorialContrato;
@@ -29,22 +30,23 @@ public class GestaoUnidadeTerritorial extends Resources.ContainerOfObjects imple
 
     @Override
     public boolean adicionarUT(UnidadeTerritorialContrato utc) throws UnidadeTerritorialException {
-
-        if (findObject(utc) == -1) {
-
-            boolean toReturn = this.addObject(utc);
-            if (toReturn == true) {
-                System.out.println("A unidade territorial foi adicionada com sucesso.");
-                return toReturn;
+        if (utc != null) {
+            if (findObject(utc) == -1) {
+                boolean toReturn = this.addObject(utc);
+                if (toReturn == true) {
+                    System.out.println("A unidade territorial foi adicionada com sucesso.");
+                    return toReturn;
+                } else {
+                    System.out.println("A unidade territorial não foi adicionada!!!");
+                    return toReturn;
+                }
             } else {
-                System.out.println("A unidade territorial não foi adicionada!!!");
-                return toReturn;
+                throw new UnidadeTerritorialException("O ficheiro ja se encontra no vetor!");
             }
-        } else {
-            System.out.println("A unidade territorial já se encontra adicionada!!!");
-            return false;
-        }
 
+        } else {
+            throw new UnidadeTerritorialException("O objeto enviado é nulo!");
+        }
     }
 
     /**
@@ -66,6 +68,9 @@ public class GestaoUnidadeTerritorial extends Resources.ContainerOfObjects imple
      */
     @Override
     public void listarUT() throws UnidadeTerritorialException {
+        if (super.countObject() == 0) {
+            throw new UnidadeTerritorialException("Não existem elementos no vetor!");
+        }
         for (UnidadeTerritorialContrato ut : (UnidadeTerritorialContrato[]) this.getUts()) {
             this.listarUTindividual(ut);
         }
@@ -94,11 +99,15 @@ public class GestaoUnidadeTerritorial extends Resources.ContainerOfObjects imple
      */
     @Override
     public void listarUT(TipoUnidadeTerritorialContrato tutc) throws UnidadeTerritorialException {
+
         this.listarUTs(this.getUTsPorTipo(tutc));
     }
 
     @Override
     public UnidadeTerritorialContrato getUT(int i) throws UnidadeTerritorialException {
+        if (i > this.countObject() - 1) {
+            throw new UnidadeTerritorialException("A posiçao enviada não existe");
+        }
         return (UnidadeTerritorialContrato) super.getObject(i);
     }
 
@@ -121,6 +130,9 @@ public class GestaoUnidadeTerritorial extends Resources.ContainerOfObjects imple
                 tempContainer.addObject(ut);
             }
         }
+        if (tempContainer.countObject() == 0) {
+            throw new UnidadeTerritorialException("Não existem unidades territorias do tipo inserido!");
+        }
         UnidadeTerritorialContrato[] toReturn = (UnidadeTerritorialContrato[]) tempContainer.getUts();
         return toReturn;
 
@@ -133,16 +145,25 @@ public class GestaoUnidadeTerritorial extends Resources.ContainerOfObjects imple
 
     @Override
     public int getPosicao(UnidadeTerritorialContrato utc) throws UnidadeTerritorialException {
+        UnidadeTerritorial utcCasted = (UnidadeTerritorial) utc;
+        if (this.countObject() == 0) {
+            throw new UnidadeTerritorialException("Não existem unidades territoriais");
+        }
+        if (findObject(utc) == -1) {
+            throw new UnidadeTerritorialException("A unidade territoria não se encontra no vetor");
+        }
+
         return findObject(utc);
     }
 
-    public static UnidadeTerritorialContrato[] castToUnidadeTerritorial(Object[] objVector) {
-        UnidadeTerritorialContrato[] uts = new UnidadeTerritorialContrato[objVector.length];
+    public static UnidadeTerritorial[] castToUnidadeTerritorial(Object[] objVector) {
+        UnidadeTerritorial[] uts = new UnidadeTerritorial[objVector.length];
         for (int i = 0; i < objVector.length; i++) {
-            uts[i] = (UnidadeTerritorialContrato) objVector[i];
+            uts[i] = (UnidadeTerritorial) objVector[i];
         }
 
         return uts;
     }
 
+    
 }
