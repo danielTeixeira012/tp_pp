@@ -1,7 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/*  
+ * Nome: Ivo Lopes Ribeiro  
+ * Número: 8130258  
+ * Turma: 3 
+ *  
+ * Nome: Daniel Filipe da Costa Teixeira  
+ * Número: 8140360 
+ * Turma: 2  
  */
 package trabalhopp;
 
@@ -61,7 +65,7 @@ public class TrabalhoPP2 {
         UnidadeTerritorialContrato[] uts = ficheiro.parseLines(linhas, ';', anos);
         GestaoUnidadeTerritorial gut = new GestaoUnidadeTerritorial(uts);
         MapeamentoDemo m1 = new MapeamentoDemo(uts);
-        m1.printMap(0);
+        //m1.printMap(0);
         
         Genero[] generos1 = {fem, masc, total};
         Ano[] anos1 = {ano2002, ano2013};
@@ -72,7 +76,7 @@ public class TrabalhoPP2 {
         GestaoUnidadeTerritorial gutMunicipios = new GestaoUnidadeTerritorial(vetorCasted);
         gestorSalario gestorSal = new gestorSalario();
         //responasvel por retornar os salarios 
-        gestorSalario gestorSalarios = new gestorSalario(gestorSalario.castToSalarios(gestorSal.getSalarios(gut.getUTsPorTipo(municipio), anos1, generos1)));
+        gestorSalario gestorSalarios = new gestorSalario(gestorSalario.castToSalarios(gestorSal.getSalarios(generos1, anos1, municipio)));
 
         //implementação do getUts atraves do tipo
         Gmaps map = new Gmaps();

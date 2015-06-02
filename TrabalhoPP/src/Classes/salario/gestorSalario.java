@@ -1,7 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/*  
+ * Nome: Ivo Lopes Ribeiro  
+ * Número: 8130258  
+ * Turma: 3 
+ *  
+ * Nome: Daniel Filipe da Costa Teixeira  
+ * Número: 8140360 
+ * Turma: 2  
  */
 package Classes.salario;
 
@@ -26,17 +30,34 @@ import static java.lang.Float.parseFloat;
  */
 public class gestorSalario extends Resources.ContainerOfObjects implements GestorSalariosContrato {
 
+    /**
+     *
+     */
     public gestorSalario() {
     }
 
+    /**
+     *
+     * @param size
+     */
     public gestorSalario(int size) {
         super(size);
     }
 
+    /**
+     *
+     * @param salarios
+     */
     public gestorSalario(Salario[] salarios) {
         super(salarios);
     }
 
+    /**
+     *
+     * @param o
+     * @return
+     * @throws RegistoSalarioException
+     */
     @Override
     public boolean addRegistoSalario(Object o) throws RegistoSalarioException {
         if (o != null) {
@@ -58,6 +79,14 @@ public class gestorSalario extends Resources.ContainerOfObjects implements Gesto
         }
     }
 
+    /**
+     *
+     * @param utcs
+     * @param os
+     * @param os1
+     * @return
+     * @throws RegistoSalarioException
+     */
     @Override
     public Object[] getSalarios(UnidadeTerritorialContrato[] utcs, Object[] os, Object[] os1) throws RegistoSalarioException {
         gestorSalario tempGestor = new gestorSalario();
@@ -108,6 +137,14 @@ public class gestorSalario extends Resources.ContainerOfObjects implements Gesto
         return tempGestor.getSalarios();
     }
 
+    /**
+     *
+     * @param os
+     * @param os1
+     * @param tutc
+     * @return
+     * @throws RegistoSalarioException
+     */
     @Override
     public Object[] getSalarios(Object[] os, Object[] os1, TipoUnidadeTerritorialContrato tutc) throws RegistoSalarioException {
         TipoUnidadeTerritorial tutcCasted = (TipoUnidadeTerritorial) tutc;
@@ -149,12 +186,20 @@ public class gestorSalario extends Resources.ContainerOfObjects implements Gesto
         return tempGestor.getSalarios();
     }
     
-    
-
+    /**
+     *
+     * @return
+     */
     public Salario[] getSalarios() {
         return gestorSalario.castToSalarios(this.getObjects());
     }
 
+    /**
+     *
+     * @param i
+     * @return
+     * @throws RegistoSalarioException
+     */
     @Override
     public Object getSalario(int i) throws RegistoSalarioException {
         if (i > this.countObject() - 1) {
@@ -163,12 +208,23 @@ public class gestorSalario extends Resources.ContainerOfObjects implements Gesto
         return this.getObject(i);
     }
 
+    /**
+     *
+     * @param salario
+     * @return
+     */
     public String SalarioToString(Salario salario) {
         return salario.toString();
     }
 
     //Faz o cast de um vetor para um vetor de Gestao de Mapeamento
-    public static Salario[] castToSalarios(Object[] objVector) {
+
+    /**
+     *
+     * @param objVector
+     * @return
+     */
+        public static Salario[] castToSalarios(Object[] objVector) {
         Salario[] salarios = new Salario[objVector.length];
         for (int i = 0; i < objVector.length; i++) {
             salarios[i] = (Salario) objVector[i];
@@ -177,6 +233,10 @@ public class gestorSalario extends Resources.ContainerOfObjects implements Gesto
         return salarios;
     }
 
+    /**
+     *
+     * @return
+     */
     public String SalariosToString() {
         String str = "";
         for (Salario salario : castToSalarios(this.getObjects())) {
@@ -186,16 +246,29 @@ public class gestorSalario extends Resources.ContainerOfObjects implements Gesto
 
     }
 
+    /**
+     *
+     * @param salario
+     */
     public void listarSalario(Salario salario) {
         System.out.println(salario.toString());
     }
 
+    /**
+     *
+     * @param salarios
+     */
     public void listarSalarios(Salario[] salarios) {
         for (Salario salario : salarios) {
             listarSalario(salario);
         }
     }
 
+    /**
+     *
+     * @param str
+     * @return
+     */
     public static Float StringToFloat(String str) {
         String replace = str.replace(",", ".");
         String replaceVoid = replace.replace(" ", "");

@@ -1,7 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/*  
+ * Nome: Ivo Lopes Ribeiro  
+ * Número: 8130258  
+ * Turma: 3 
+ *  
+ * Nome: Daniel Filipe da Costa Teixeira  
+ * Número: 8140360 
+ * Turma: 2  
  */
 package Resources;
 
@@ -17,21 +21,39 @@ public class ContainerOfObjects implements GestorObjetosContrato {
     private final int DEFAULT_SIZE = 30;
     private Object[] objects;
 
+    /**
+     * Construtor da classe
+     *
+     * @param objects recebe um vetor de objetos para inicializar o atributo
+     */
     public ContainerOfObjects(Object[] objects) {
         this.objects = objects;
 
     }
 
+    /**
+     * Construtor da Classe, inicia o atributo com um vetor de obetos vazio
+     */
     public ContainerOfObjects() {
         this.objects = new Object[0];
     }
 
+    /**
+     * Construtor da Classe, inicia o atributo com um vetor com tamanho definido
+     *
+     * @param size tamanho do vetor a ser inicializado
+     */
     public ContainerOfObjects(int size) {
         if (size <= DEFAULT_SIZE && size > 0) {
             this.objects = new Object[size];
         }
     }
 
+    /**
+     * Conta todos os objetos presentes no ventor da actual instancia
+     *
+     * @return o numero de obejtos contados
+     */
     public int countObject() {
         int count = 0;
         for (Object obj : this.objects) {
@@ -42,6 +64,12 @@ public class ContainerOfObjects implements GestorObjetosContrato {
         return count;
     }
 
+    /**
+     * Adiciona um novo objeto ao vetor
+     *
+     * @param newObject novo objeto a adicionar
+     * @return
+     */
     @Override
     public boolean addObject(Object newObject) {
         this.increaseSize();
@@ -49,6 +77,11 @@ public class ContainerOfObjects implements GestorObjetosContrato {
         return true;
     }
 
+    /**
+     *Remove um objeto ao vetor actual da instancia
+     * @param position indice actual do objeto a eliminar
+     * @return O objeto eliminado caso com sucesso , no caso de insucesso
+     */
     @Override
     public Object removeObject(int position) {
         if (countObject() != 0) {
@@ -62,10 +95,20 @@ public class ContainerOfObjects implements GestorObjetosContrato {
         return null;
     }
 
+    /**
+     *
+     * @return 
+     */
     public Object[] getObjects() {
         return objects;
     }
 
+    /**
+     *
+     * @param position
+     * @param newObject
+     * @return
+     */
     protected boolean setObject(int position, Object newObject) {
         if (this.objects[position] != null) {
             this.objects[position] = newObject;
@@ -97,6 +140,11 @@ public class ContainerOfObjects implements GestorObjetosContrato {
         return true;
     }
 
+    /**
+     *
+     * @param obj
+     * @return
+     */
     @Override
     public int findObject(Object obj) {
         int index = -1;
@@ -123,11 +171,20 @@ public class ContainerOfObjects implements GestorObjetosContrato {
 //        }
 //
 //    }
+    /**
+     *
+     * @param i
+     * @return
+     */
     @Override
     public Object getObject(int i) {
         return this.objects[i];
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public boolean increaseSize() {
         Object array[] = new Object[this.objects.length + 1];
@@ -137,6 +194,10 @@ public class ContainerOfObjects implements GestorObjetosContrato {
         return true;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public boolean decreaseSize() {
         Object array[] = new Object[this.objects.length - 1];
@@ -148,12 +209,20 @@ public class ContainerOfObjects implements GestorObjetosContrato {
         return true;
     }
 
+    /**
+     *
+     */
     @Override
     public void sort() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     //Faz o cast de um vetor para um vetor de Containers
+    /**
+     *
+     * @param objVector
+     * @return
+     */
     public ContainerOfObjects[] castVector(Object[] objVector) {
         ContainerOfObjects[] containers = new ContainerOfObjects[objVector.length];
         for (int i = 0; i < objVector.length; i++) {

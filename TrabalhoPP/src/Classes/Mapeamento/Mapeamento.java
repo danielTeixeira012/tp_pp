@@ -1,7 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/*  
+ * Nome: Ivo Lopes Ribeiro  
+ * Número: 8130258  
+ * Turma: 3 
+ *  
+ * Nome: Daniel Filipe da Costa Teixeira  
+ * Número: 8140360 
+ * Turma: 2  
  */
 package Classes.Mapeamento;
 
@@ -16,30 +20,55 @@ public class Mapeamento {
     private UnidadeTerritorialContrato ut;
     private Mapeamento[] mapeamentosFilho;
 
+    /**
+     *
+     * @param ut
+     */
     public Mapeamento(UnidadeTerritorialContrato ut) {
         GestaoMapeamento gestaoMapeamentosFilho = new GestaoMapeamento();
         this.mapeamentosFilho = gestaoMapeamentosFilho.getMaps();
         this.ut = ut;
     }
 
+    /**
+     *
+     * @return
+     */
     public UnidadeTerritorialContrato getUt() {
         return ut;
     }
 
+    /**
+     *
+     * @param ut
+     */
     public void setUt(UnidadeTerritorialContrato ut) {
         this.ut = ut;
     }
 
+    /**
+     *
+     * @param mapeamentoFilho
+     */
     public void addMapeamentoFilho(Mapeamento mapeamentoFilho) {
         GestaoMapeamento gestaoMapeamentosFilho = new GestaoMapeamento(this.mapeamentosFilho);
         gestaoMapeamentosFilho.addMap(mapeamentoFilho);
         this.mapeamentosFilho = gestaoMapeamentosFilho.getMaps();
     }
 
+    /**
+     *
+     * @return
+     */
     public Mapeamento[] getMapeamentosFilho() {
         return this.mapeamentosFilho;
     }
 
+    /**
+     *
+     * @param indice
+     * @return
+     */
     public Mapeamento getMapeamentoFilho(int indice) {
         GestaoMapeamento gestaoMapeamentosFilho = new GestaoMapeamento(this.mapeamentosFilho);
         return (Mapeamento) gestaoMapeamentosFilho.getMap(indice);

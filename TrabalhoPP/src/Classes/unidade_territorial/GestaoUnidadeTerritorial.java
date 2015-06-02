@@ -1,7 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/*  
+ * Nome: Ivo Lopes Ribeiro  
+ * Número: 8130258  
+ * Turma: 3 
+ *  
+ * Nome: Daniel Filipe da Costa Teixeira  
+ * Número: 8140360 
+ * Turma: 2  
  */
 package Classes.unidade_territorial;
 
@@ -17,17 +21,34 @@ import Interfaces.UnidadeTerritorialContrato;
  */
 public class GestaoUnidadeTerritorial extends Resources.ContainerOfObjects implements GestorUnidadeTerritorialContrato {
 
+    /**
+     *
+     * @param objects
+     */
     public GestaoUnidadeTerritorial(UnidadeTerritorialContrato[] objects) {
         super(objects);
     }
 
+    /**
+     *
+     */
     public GestaoUnidadeTerritorial() {
     }
 
+    /**
+     *
+     * @param size
+     */
     public GestaoUnidadeTerritorial(int size) {
         super(size);
     }
 
+    /**
+     *
+     * @param utc
+     * @return
+     * @throws UnidadeTerritorialException
+     */
     @Override
     public boolean adicionarUT(UnidadeTerritorialContrato utc) throws UnidadeTerritorialException {
         if (utc != null) {
@@ -103,6 +124,12 @@ public class GestaoUnidadeTerritorial extends Resources.ContainerOfObjects imple
         this.listarUTs(this.getUTsPorTipo(tutc));
     }
 
+    /**
+     *
+     * @param i
+     * @return
+     * @throws UnidadeTerritorialException
+     */
     @Override
     public UnidadeTerritorialContrato getUT(int i) throws UnidadeTerritorialException {
         if (i > this.countObject() - 1) {
@@ -111,6 +138,11 @@ public class GestaoUnidadeTerritorial extends Resources.ContainerOfObjects imple
         return (UnidadeTerritorialContrato) super.getObject(i);
     }
 
+    /**
+     *
+     * @return
+     * @throws UnidadeTerritorialException
+     */
     public UnidadeTerritorialContrato[] getUts() throws UnidadeTerritorialException {
         UnidadeTerritorialContrato[] uts = new UnidadeTerritorialContrato[this.getTamanho()];
         for (int i = 0; i < this.getTamanho(); i++) {
@@ -120,6 +152,12 @@ public class GestaoUnidadeTerritorial extends Resources.ContainerOfObjects imple
         return uts;
     }
 
+    /**
+     *
+     * @param tutc
+     * @return
+     * @throws UnidadeTerritorialException
+     */
     @Override
     public UnidadeTerritorialContrato[] getUTsPorTipo(TipoUnidadeTerritorialContrato tutc) throws UnidadeTerritorialException {
         GestaoUnidadeTerritorial tempContainer = new GestaoUnidadeTerritorial();
@@ -139,11 +177,21 @@ public class GestaoUnidadeTerritorial extends Resources.ContainerOfObjects imple
 
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public int getTamanho() {
         return super.countObject();
     }
 
+    /**
+     *
+     * @param utc
+     * @return
+     * @throws UnidadeTerritorialException
+     */
     @Override
     public int getPosicao(UnidadeTerritorialContrato utc) throws UnidadeTerritorialException {
         UnidadeTerritorial utcCasted = (UnidadeTerritorial) utc;
@@ -157,6 +205,11 @@ public class GestaoUnidadeTerritorial extends Resources.ContainerOfObjects imple
         return findObject(utc);
     }
 
+    /**
+     *
+     * @param objVector
+     * @return
+     */
     public static UnidadeTerritorial[] castToUnidadeTerritorial(Object[] objVector) {
         UnidadeTerritorial[] uts = new UnidadeTerritorial[objVector.length];
         for (int i = 0; i < objVector.length; i++) {

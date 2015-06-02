@@ -1,7 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/*  
+ * Nome: Ivo Lopes Ribeiro  
+ * Número: 8130258  
+ * Turma: 3 
+ *  
+ * Nome: Daniel Filipe da Costa Teixeira  
+ * Número: 8140360 
+ * Turma: 2  
  */
 package Classes.Coordenadas;
 
@@ -9,27 +13,39 @@ import Resources.ContainerOfObjects;
 
 /**
  *
- * @author danielteixeira
+ * @author aluno
  */
-public class GestaoLocalizacao extends ContainerOfObjects{
+public class GestaoLocalizacao extends ContainerOfObjects {
 
+    /**
+     *
+     * @param objects
+     */
     public GestaoLocalizacao(Object[] objects) {
         super(objects);
     }
 
+    /**
+     *
+     */
     public GestaoLocalizacao() {
     }
 
+    /**
+     *
+     * @param size
+     */
     public GestaoLocalizacao(int size) {
         super(size);
     }
 
-    @Override
-    public boolean addObject(Object newObject) {
-        return super.addObject(newObject); //To change body of generated methods, choose Tools | Templates.
+    /**
+     *
+     * @param newLocal
+     * @return
+     */
+    public boolean addLocalizacao(Localizacao newLocal) {
+        return super.addObject(newLocal);
     }
-    
-    
-    
-    
+
 }

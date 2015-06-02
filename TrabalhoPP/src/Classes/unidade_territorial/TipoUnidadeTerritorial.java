@@ -1,7 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/*  
+ * Nome: Ivo Lopes Ribeiro  
+ * Número: 8130258  
+ * Turma: 3 
+ *  
+ * Nome: Daniel Filipe da Costa Teixeira  
+ * Número: 8140360 
+ * Turma: 2  
  */
 package Classes.unidade_territorial;
 
@@ -12,14 +16,26 @@ package Classes.unidade_territorial;
 public class TipoUnidadeTerritorial implements Interfaces.TipoUnidadeTerritorialContrato {
     private String tipo;
 
+    /**
+     *
+     * @param tipo
+     */
     public TipoUnidadeTerritorial(String tipo) {
         this.tipo = tipo;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getTipo() {
         return tipo;
     }
 
+    /**
+     *
+     * @param tipo
+     */
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }

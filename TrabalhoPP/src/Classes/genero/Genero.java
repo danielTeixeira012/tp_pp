@@ -1,7 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/*  
+ * Nome: Ivo Lopes Ribeiro  
+ * Número: 8130258  
+ * Turma: 3 
+ *  
+ * Nome: Daniel Filipe da Costa Teixeira  
+ * Número: 8140360 
+ * Turma: 2  
  */
 package Classes.genero;
 
@@ -12,14 +16,26 @@ package Classes.genero;
 public class Genero {
     private String genero;
 
+    /**
+     *
+     * @param genero
+     */
     public Genero(String genero) {
         this.genero = genero;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getGenero() {
         return genero;
     }
 
+    /**
+     *
+     * @param genero
+     */
     public void setGenero(String genero) {
         this.genero = genero;
     }

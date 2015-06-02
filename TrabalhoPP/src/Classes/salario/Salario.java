@@ -1,7 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/*  
+ * Nome: Ivo Lopes Ribeiro  
+ * Número: 8130258  
+ * Turma: 3 
+ *  
+ * Nome: Daniel Filipe da Costa Teixeira  
+ * Número: 8140360 
+ * Turma: 2  
  */
 package Classes.salario;
 
@@ -21,6 +25,13 @@ public class Salario extends RegistoSalarioException {
     private float salario;
     private UnidadeTerritorialContrato ut;
 
+    /**
+     *
+     * @param ano
+     * @param generoSalario
+     * @param salario
+     * @param ut
+     */
     public Salario(Ano ano, Genero generoSalario, float salario, UnidadeTerritorialContrato ut) {
 
         this.ano = ano;
@@ -29,34 +40,66 @@ public class Salario extends RegistoSalarioException {
         this.ut = ut;
     }
 
+    /**
+     *
+     * @return
+     */
     public Ano getAno() {
         return ano;
     }
 
+    /**
+     *
+     * @param ano
+     */
     public void setAno(Ano ano) {
         this.ano = ano;
     }
 
+    /**
+     *
+     * @return
+     */
     public Genero getGeneroSalario() {
         return generoSalario;
     }
 
+    /**
+     *
+     * @param generoSalario
+     */
     public void setGeneroSalario(Genero generoSalario) {
         this.generoSalario = generoSalario;
     }
 
+    /**
+     *
+     * @return
+     */
     public float getSalario() {
         return salario;
     }
 
+    /**
+     *
+     * @param salario
+     */
     public void setSalario(float salario) {
         this.salario = salario;
     }
 
+    /**
+     *
+     * @return
+     */
     public UnidadeTerritorialContrato getUt() {
         return ut;
     }
 
+    /**
+     *
+     * @param ut
+     */
     public void setUt(UnidadeTerritorialContrato ut) {
         this.ut = ut;
     }

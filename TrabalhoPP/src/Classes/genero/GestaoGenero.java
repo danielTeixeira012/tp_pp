@@ -1,7 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/*  
+ * Nome: Ivo Lopes Ribeiro  
+ * Número: 8130258  
+ * Turma: 3 
+ *  
+ * Nome: Daniel Filipe da Costa Teixeira  
+ * Número: 8140360 
+ * Turma: 2  
  */
 package Classes.genero;
 
@@ -11,17 +15,33 @@ package Classes.genero;
  */
 public class GestaoGenero extends Resources.ContainerOfObjects {
 
+    /**
+     *
+     * @param generos
+     */
     public GestaoGenero(Genero[] generos) {
         super(generos);
     }
 
+    /**
+     *
+     */
     public GestaoGenero() {
     }
 
+    /**
+     *
+     * @param size
+     */
     public GestaoGenero(int size) {
         super(size);
     }
 
+    /**
+     *
+     * @param objVector
+     * @return
+     */
     public static Genero[] castToGeneros(Object[] objVector) {
         Genero[] generos = new Genero[objVector.length];
         for (int i = 0; i < objVector.length; i++) {
