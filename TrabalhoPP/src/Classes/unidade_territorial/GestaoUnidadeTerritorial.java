@@ -17,7 +17,7 @@ import Interfaces.UnidadeTerritorialContrato;
  */
 public class GestaoUnidadeTerritorial extends Resources.ContainerOfObjects implements GestorUnidadeTerritorialContrato {
 
-    public GestaoUnidadeTerritorial(Object[] objects) {
+    public GestaoUnidadeTerritorial(UnidadeTerritorialContrato[] objects) {
         super(objects);
     }
 
@@ -124,9 +124,10 @@ public class GestaoUnidadeTerritorial extends Resources.ContainerOfObjects imple
     public UnidadeTerritorialContrato[] getUTsPorTipo(TipoUnidadeTerritorialContrato tutc) throws UnidadeTerritorialException {
         GestaoUnidadeTerritorial tempContainer = new GestaoUnidadeTerritorial();
         tempContainer.getObjects();
-
-        for (UnidadeTerritorialContrato ut : this.getUts()) {
-            if (ut.getTipo() == tutc) {
+        TipoUnidadeTerritorial tut=(TipoUnidadeTerritorial)tutc;
+        for (UnidadeTerritorial ut : GestaoUnidadeTerritorial.castToUnidadeTerritorial(this.getUts())) {
+            
+            if (ut.getTipoUt().equals(tut.getTipo()) ) {
                 tempContainer.addObject(ut);
             }
         }
@@ -164,6 +165,5 @@ public class GestaoUnidadeTerritorial extends Resources.ContainerOfObjects imple
 
         return uts;
     }
-
     
 }

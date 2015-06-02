@@ -16,7 +16,7 @@ public class GestaoMapeamento extends ContainerOfObjects {
     public GestaoMapeamento() {
     }
 
-    public GestaoMapeamento(Object[] objects) {
+    public GestaoMapeamento(Mapeamento[] objects) {
         super(objects);
     }
 

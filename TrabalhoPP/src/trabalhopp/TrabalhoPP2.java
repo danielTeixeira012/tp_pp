@@ -11,8 +11,6 @@ import Classes.Coordenadas.Localizacao;
 import Classes.Mapeamento.MapeamentoDemo;
 import Classes.ano.Ano;
 import Classes.genero.Genero;
-import Classes.genero.GestaoGenero;
-import Classes.salario.Salario;
 import Classes.salario.gestorSalario;
 import Classes.unidade_territorial.GestaoUnidadeTerritorial;
 import Classes.unidade_territorial.TipoUnidadeTerritorial;
@@ -32,12 +30,12 @@ import java.io.IOException;
  *
  * @author danielteixeira
  */
-public class TrabalhoPP {
+public class TrabalhoPP2 {
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws UnidadeTerritorialException, RegistoSalarioException, IOException, CoordinatesNotFound {
+    public static void main(String[] args) throws UnidadeTerritorialException, RegistoSalarioException {
         
         TipoUnidadeTerritorial nuts = new TipoUnidadeTerritorial("NUTS2013");
         TipoUnidadeTerritorial nuts1 = new TipoUnidadeTerritorial("NUTS I");
@@ -98,7 +96,6 @@ public class TrabalhoPP {
         }
         
         map.startMap(41.366700, -8.194861, 10);
-        
     }
     
 }

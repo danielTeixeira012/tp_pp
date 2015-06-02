@@ -18,6 +18,7 @@ import Exceptions.RegistoSalarioException;
 import Interfaces.GestorSalariosContrato;
 import Interfaces.TipoUnidadeTerritorialContrato;
 import Interfaces.UnidadeTerritorialContrato;
+import static java.lang.Float.parseFloat;
 
 /**
  *
@@ -78,8 +79,8 @@ public class gestorSalario extends Resources.ContainerOfObjects implements Gesto
         }
 
         for (UnidadeTerritorial ut : GestaoUnidadeTerritorial.castToUnidadeTerritorial(utcs)) {
-            if (ut.getTipoUt() != "MUNICIPIO") {
-                throw new RegistoSalarioException("Existem unidades territorais diferentes de municipios");
+            if (!ut.getTipoUt().equals("Município")) {
+                throw new RegistoSalarioException("Existem unidades territorais diferentes de unicipios");
             }
 
             for (Salario salario : ut.getGestaoSal().getSalarios()) {
@@ -121,7 +122,7 @@ public class gestorSalario extends Resources.ContainerOfObjects implements Gesto
         if (gGenero.countObject() == 0) {
             throw new RegistoSalarioException("Não foram enviados generos");
         }
-        if (!"NUTS1".equals(tutcCasted.getTipo()) && !"NUTS2".equals(tutcCasted.getTipo())) {
+        if (!"NUTS I".equals(tutcCasted.getTipo()) && !"NUTS II".equals(tutcCasted.getTipo())) {
             throw new RegistoSalarioException("O tipo de unidade territorial não é dos tipos NUTS1 nem Nuts2");
         }
 
@@ -145,8 +146,10 @@ public class gestorSalario extends Resources.ContainerOfObjects implements Gesto
             }
 
         }
-        return null;
+        return tempGestor.getSalarios();
     }
+    
+    
 
     public Salario[] getSalarios() {
         return gestorSalario.castToSalarios(this.getObjects());
@@ -193,4 +196,11 @@ public class gestorSalario extends Resources.ContainerOfObjects implements Gesto
         }
     }
 
+    public static Float StringToFloat(String str) {
+        String replace = str.replace(",", ".");
+        String replaceVoid = replace.replace(" ", "");
+        float salFloat = parseFloat(replaceVoid);
+        return salFloat;
+
+    }
 }

@@ -27,7 +27,6 @@ public class GestaoGenero extends Resources.ContainerOfObjects {
         for (int i = 0; i < objVector.length; i++) {
             generos[i] = (Genero) objVector[i];
         }
-
         return generos;
     }
 
