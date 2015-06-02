@@ -13,6 +13,7 @@ import Exceptions.RegistoSalarioException;
 import Interfaces.GestorSalariosContrato;
 import Interfaces.TipoUnidadeTerritorialContrato;
 import Interfaces.UnidadeTerritorialContrato;
+import static java.lang.Float.parseFloat;
 
 /**
  *
@@ -32,17 +33,17 @@ public class gestorSalario extends Resources.ContainerOfObjects implements Gesto
     }
 
     @Override
-    public boolean addRegistoSalario(Object o) throws RegistoSalarioException {      
-        if(super.findObject(o) == -1 || o == null){
-        boolean toReturn = this.addObject(o);
-        if (toReturn == true) {
-            System.out.println("O salario foi adicionado com sucesso");
-            return toReturn;
+    public boolean addRegistoSalario(Object o) throws RegistoSalarioException {
+        if (super.findObject(o) == -1 || o == null) {
+            boolean toReturn = this.addObject(o);
+            if (toReturn == true) {
+                System.out.println("O salario foi adicionado com sucesso");
+                return toReturn;
+            } else {
+                System.out.println("O salario não foi adicionado!!!");
+                return toReturn;
+            }
         } else {
-            System.out.println("O salario não foi adicionado!!!");
-            return toReturn;
-        }
-        }else{
             throw new RegistoSalarioException("A unidade territorial já se encontra no vetor");
         }
     }
@@ -122,6 +123,13 @@ public class gestorSalario extends Resources.ContainerOfObjects implements Gesto
         }
         return str;
 
+    }
+
+    public static Float StringToFloat(String str) {
+        String replace = str.replace(",", ".");
+        String replaceVoid = replace.replace(" ","");
+        float salFloat = parseFloat(replaceVoid);
+        return salFloat;
     }
 
 }

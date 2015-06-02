@@ -34,12 +34,12 @@ public class MapeamentoDemo {
 
         for (UnidadeTerritorialContrato ut : uts) {
             TipoUnidadeTerritorial tut = (TipoUnidadeTerritorial) ut.getTipo();
-            if ("NUTS".equals(tut.getTipo())) {
+            if ("NUTS 2013".equals(tut.getTipo())) {
                 Mapeamento nutsMap = new Mapeamento(ut);
                 nutsMaps.addObject(nutsMap);
             }
 
-            if ("NUTS1".equals(tut.getTipo())) {
+            if ("NUTS I".equals(tut.getTipo())) {
 
                 Mapeamento nuts1map = new Mapeamento(ut);
                 Mapeamento nutsMapPai = (Mapeamento) nutsMaps.getObject(nutsMaps.countObject() - 1);
@@ -48,7 +48,7 @@ public class MapeamentoDemo {
 
             }
 
-            if ("NUTS2".equals(tut.getTipo())) {
+            if ("NUTS II".equals(tut.getTipo())) {
                 Mapeamento nuts2map = new Mapeamento(ut);
                 Mapeamento nutsMapPai = (Mapeamento) nuts1Maps.getObject(nuts1Maps.countObject() - 1);
                 nutsMapPai.addMapeamentoFilho(nuts2map);
@@ -56,7 +56,7 @@ public class MapeamentoDemo {
 
             }
 
-            if ("NUTS3".equals(tut.getTipo())) {
+            if ("NUTS III".equals(tut.getTipo())) {
                 Mapeamento nuts3map = new Mapeamento(ut);
                 Mapeamento nutsMapPai = (Mapeamento) nuts2Maps.getObject(nuts2Maps.countObject() - 1);
                 nutsMapPai.addMapeamentoFilho(nuts3map);
@@ -64,7 +64,7 @@ public class MapeamentoDemo {
 
             }
 
-            if ("MUNICIPIO".equals(tut.getTipo())) {
+            if ("Município".equals(tut.getTipo())) {
                 Mapeamento municipiomap = new Mapeamento(ut);
                 Mapeamento nutsMapPai = (Mapeamento) nuts3Maps.getObject(nuts3Maps.countObject() - 1);
                 nutsMapPai.addMapeamentoFilho(municipiomap);
@@ -105,7 +105,6 @@ public class MapeamentoDemo {
     }
 
     public void printMap(int i) {
-
         for (Mapeamento map : this.MapsContainer[i].getMaps()) {
             System.out.println("-------------------------------------------------------------------------");
             System.out.println(map.toString());
